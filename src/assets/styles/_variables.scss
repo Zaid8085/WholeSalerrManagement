@@ -1,0 +1,36 @@
+@import './att-color-variables.scss';
+
+$color-md-primary: #2d323e;
+$color-md-primary-hue-1: #3c4252;
+$color-md-primary-hue-2: #353a48;
+$color-md-primary-hue-3: #5c616f;
+$color-md-background: $att-white;
+$color-md-background-hue-1: $att-white;
+$color-md-background-hue-2: #f5f5f5;
+$color-md-background-hue-3: #e0e0e0;
+$color-md-accent: $att-blue;
+$color-md-warn: $att-yellow;
+
+$color-white: $color-md-background;
+$color-black: $att-black;
+$color-red: $att-red;
+$color-orange: $att-orange;
+$color-yellow: $att-yellow;
+$color-green: #008000;
+
+$color-dialog-actions: rgba($color-black, 0.03);
+$color-backdrop: rgba(33, 33, 33, 1);
+$color-highlight-gray: rgba(185, 188, 191, 0.5);
+$html-light-gray: rgb(242, 242, 242);
+$color-dark-gray: rgb(169, 169, 169);
+$color-light-blue: rgb(0, 159, 219);
+$color-edit-light-blue: rgba(0, 159, 219, 0.05);
+$color-less-light-gray: #aaa;
+$color-grid-border-light-gray: rgba(0, 0, 0, 0.12);
+$color-no-results: rgba($color-black, 0.54);
+$flower-color: rgba($color-black, 0.2);
+$disabled-edit: rgba($color-black, 0.12);
+$disabled-edit-char: rgba($color-black, 0.38);
+
+$att-blue-transparent: rgba(0, 159, 219, 0.05);
+$tab-grey: rgba(0, 0, 0, 0.54);
