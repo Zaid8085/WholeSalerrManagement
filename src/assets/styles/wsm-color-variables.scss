@@ -1,0 +1,52 @@
+$wsm-background-gray: #f2f2f2;
+$wsm-black: #000;
+$wsm-blue: #009fdb;
+$wsm-dark-blue: #0568ae;
+$wsm-dark-gray: #5a5a5a;
+$wsm-dark-green: #007a3e;
+$wsm-dark-purple: #702f8a;
+$wsm-gray: #959595;
+$wsm-green: #4ca90c;
+$wsm-light-blue: #71c5e8;
+$wsm-light-gray: #d2d2d2;
+$wsm-light-green: #b5bd00;
+$wsm-light-purple: #caa2dd;
+$wsm-orange: #ea7400;
+$wsm-purple: #9063cd;
+$wsm-red: #cf2a2a;
+$wsm-white: #fff;
+$wsm-yellow: #ffb81c;
+
+$accent-colors: (
+  'wsm-accent-dark-blue': $wsm-dark-blue,
+  'wsm-accent-dark-gray': $wsm-dark-gray,
+  'wsm-accent-dark-green': $wsm-dark-green,
+  'wsm-accent-dark-purple': $wsm-dark-purple,
+  'wsm-accent-gray': $wsm-gray,
+  'wsm-accent-green': $wsm-green,
+  'wsm-accent-light-blue': $wsm-light-blue,
+  'wsm-accent-light-gray': $wsm-light-gray,
+  'wsm-accent-light-green': $wsm-light-green,
+  'wsm-accent-light-purple': $wsm-light-purple,
+  'wsm-accent-purple': $wsm-purple,
+  'wsm-accent-yellow': $wsm-yellow
+);
+
+$functional-colors: (
+  'wsm-functional-background-gray': $wsm-background-gray,
+  'wsm-functional-digital-text-black': $wsm-black,
+  'wsm-functional-link-blue': $wsm-dark-blue,
+  'wsm-functional-green': $wsm-dark-green,
+  'wsm-functional-red': $wsm-red,
+  'wsm-functional-yellow': $wsm-yellow
+);
+
+$secondary-colors: (
+  'wsm-secondary-black': $wsm-black,
+  'wsm-secondary-orange': $wsm-orange,
+  'wsm-secondary-white': $wsm-white
+);
+
+$signature-colors: (
+  'wsm-signature-blue': $wsm-blue
+);

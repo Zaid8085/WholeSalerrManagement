@@ -1,0 +1,24 @@
+<ng-container *ngFor="let menuItem of (navigationOptions)">
+  <ng-container *ngIf="(!isexpand && !menuItem.disabled) || isexpand">
+    <div class="menu-item-content tooltip"
+      [ngClass]="{'not-selected-menu-item': menuItem.route == '' || menuItem.route == null}"
+      routerLinkActive="selected-menu-item" [routerLinkActiveOptions]="{exact: false}"
+      [ngStyle]="{ 'padding-left': menuItemLeftPadding  }" (click)="onMenuItemClicked(menuItem)">
+      <span *ngIf="!isexpand" class="tooltiptext">{{menuItem.title}}</span>
+     
+      <a *ngIf="menuItem.url.length > 0" [hidden]="menuItem.url.length == 0 && isGroup(menuItem) && !isexpand" href="{{menuItem.url}}" target="_blank"><span>
+          <mat-icon [ngStyle]="{'margin-right': isexpand ? '5px' : '10px'}">{{menuItem.icon}}</mat-icon>
+        </span><span class="menu-item-label">{{ menuItem.label }}</span></a>
+     
+        <a [routerLink]="menuItem.route" [class.disabled]="menuItem.route == '' ? true : null"><span>
+          <mat-icon [ngStyle]="{'margin-right': isexpand ? '5px' : '10px'}" *ngIf="menuItem.url.length == 0">
+            {{menuItem.icon}}</mat-icon>
+        </span><span class="menu-item-label" *ngIf="menuItem.url.length == 0">{{ menuItem.label }}</span></a>
+      
+        <mat-icon class="align-right">{{ menuItem.url.length == 0 && isGroup(menuItem) && !menuItem.isOpen ? 'chevron_right' : (isGroup(menuItem) ? 'keyboard_arrow_down' : '')}}</mat-icon>      
+    </div>
+  </ng-container>
+  <div class="menu-item-children" *ngIf="isGroup(menuItem)" [ngStyle]="{ height: childrenHeight(menuItem) }">
+    <bolt-menu-item [navigationOptions]="menuItem.children" [level]="level + 1" [isexpand]="isexpand"></bolt-menu-item>
+  </div>
+</ng-container>
