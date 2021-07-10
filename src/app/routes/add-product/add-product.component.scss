@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid lightgray;
+  background-color: lightgrey;
+  mat-card {
+    width: 80%;
+    min-height: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+    .parent-div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: space-between;
+      div {
+        width: 50%;
+        margin: 10px;
+        mat-form-field {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.btn-row {
+  margin: 10px;
+  float: end;
+  text-align: right;
+  button {
+    margin-left: 20px;
+    width: 150px;
+    border-radius: 100px;
+  }
+}
+.primary {
+  background-image: linear-gradient(#f13737, #ff7177);
+  color: white;
+}

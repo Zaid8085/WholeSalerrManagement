@@ -1,4 +1,4 @@
-@import '../../../../../assets/styles/variables';
+@import "../../../../../assets/styles/variables";
 // #2d323e , #009FA4
 .menu-item-content {
   display: flex;
@@ -8,15 +8,15 @@
   height: 48px;
   color: #fff;
   overflow: hidden;
-  
+
   i {
     margin-right: 10px;
     color: #fff;
   }
 
   &:hover {
-    background: whitesmoke!important;
-    color: #2d323e  !important;
+    background: whitesmoke !important;
+    color: #2d323e !important;
   }
 
   .align-right {
@@ -38,18 +38,18 @@
     transform: rotate(0deg);
   }
 
-  mat-icon{    
+  mat-icon {
     font-size: 16px;
     width: 16px;
     height: 16px;
   }
 
-  a{
-    color:inherit;
+  a {
+    color: inherit;
     display: flex;
     align-items: center;
     text-decoration: none;
-    &:hover{
+    &:hover {
       text-decoration: none;
     }
   }
@@ -101,16 +101,17 @@ span.tooltiptext:before {
 
 .selected-menu-item {
   // background-color: #ffffff;
-  background-image:linear-gradient(#f13737, #ff7177);
+  background-image: linear-gradient(#f13737, #ff7177);
   color: #2d323e;
   &:hover {
-    background-color: #2d323e ;
+    background-color: #2d323e;
   }
 }
-.not-selected-menu-item{
+.not-selected-menu-item {
   background-color: #2d323e !important;
   color: #fff;
   &:hover {
-    background-color:  #2d323e ;
+    background-color: #2d323e;
   }
 }
+
