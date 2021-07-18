@@ -9,7 +9,7 @@ import { LayoutContentComponent } from './layout/layout/layout-content/layout-co
 import { RootMaterialModule } from './shared/modules/root-material.module';
 import { BoltSidenavModule } from './layout/bolt-sidenav/bolt-sidenav.module';
 import { LayoutModule } from './layout/layout/layout.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,6 @@ import { LayoutModule } from './layout/layout/layout.module';
     BrowserAnimationsModule,
     RootMaterialModule,
     BoltSidenavModule,
-    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

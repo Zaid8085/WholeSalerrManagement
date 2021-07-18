@@ -1,4 +1,4 @@
-.container {
+form {
   width: 100%;
   height: 100%;
 
@@ -24,9 +24,20 @@
         width: 50%;
         margin: 10px;
         mat-form-field {
-          width: 100%;
+          width: 100%; 
         }
       }
+    }
+  }
+}   
+.parent-div1 {
+  display: flex;
+  flex-direction: row;
+  div {
+    width: 100%;
+    margin: 10px;
+    mat-form-field {
+      width: 100%;
     }
   }
 }
