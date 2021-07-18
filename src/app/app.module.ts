@@ -10,9 +10,11 @@ import { RootMaterialModule } from './shared/modules/root-material.module';
 import { BoltSidenavModule } from './layout/bolt-sidenav/bolt-sidenav.module';
 import { LayoutModule } from './layout/layout/layout.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DistributorEntryComponent } from './routes/distributor-entry/distributor-entry.component';
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,

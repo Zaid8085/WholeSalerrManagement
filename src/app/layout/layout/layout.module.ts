@@ -18,6 +18,13 @@ const routes = [
         (m) => m.AddProductModule
       ),
   },
+  {
+    path: 'distributor-entry',
+    loadChildren: () =>
+      import('../../routes/distributor-entry/distributor-entry.module').then(
+        (m) => m.DistributorEntryModule
+      ),
+  },
 ];
 @NgModule({
   declarations: [LayoutComponent, LayoutContentComponent],
