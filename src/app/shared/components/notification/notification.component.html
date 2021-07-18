@@ -1,0 +1,28 @@
+<div class="success-bar-container">
+  <div>
+    <span
+      class="material-icons success-icon"
+      [ngClass]="{
+        'success-icon': data.type === 'success',
+        'error-icon': data.type === 'error'
+      }"
+    >
+      {{ data.type === "success" ? "done_all" : "error_outline" }}
+    </span>
+  </div>
+  <div>
+    <span class="text-msg"
+      ><strong>{{ data.type === "success" ? "Success: " : "Error: " }}</strong>
+      {{ data.customMsg }}</span
+    >
+  </div>
+  <div>
+    <span
+      class="material-icons cursor-pointer close"
+      color="warn"
+      (click)="closeSnackbar()"
+    >
+      cancel
+    </span>
+  </div>
+</div>

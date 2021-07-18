@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 const PREF = 'bolt-sidenav-expand--pref';
 
@@ -7,7 +8,7 @@ const PREF = 'bolt-sidenav-expand--pref';
 })
 
 export class BoltSidenavService {
-
+  emitMenuOptions = new BehaviorSubject({});
   constructor() { }
 
   setSidenavExpanded(isExpand: boolean) {

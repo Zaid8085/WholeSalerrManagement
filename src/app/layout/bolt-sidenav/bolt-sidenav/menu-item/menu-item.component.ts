@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { BoltMenuItem } from '../../bolt-menu-item.model';
+import { BoltSidenavService } from '../../bolt-sidenav.service';
 
 @Component({
   selector: 'bolt-menu-item',
@@ -13,7 +14,7 @@ export class MenuItemComponent implements OnChanges {
   @Input() menuItemChildren: BoltMenuItem[];
   @Input() navigationOptions: BoltMenuItem[];
 
-  constructor() {}
+  constructor(private boltSidenavService: BoltSidenavService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.defaultExpand(changes);
@@ -45,6 +46,7 @@ export class MenuItemComponent implements OnChanges {
       });
       return;
     } else if (menuItem.route !== '' && menuItem.url === '') {
+      this.boltSidenavService.emitMenuOptions.next(this.navigationOptions)
       if (menuItem.children) {
         menuItem.children.forEach(child => {
           menuItem.label === child.label ? child.isSelected = true : child.isSelected = false;

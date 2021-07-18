@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BoltMenuItem } from '../bolt-sidenav/bolt-menu-item.model';
+import { BoltSidenavService } from "../bolt-sidenav/bolt-sidenav.service";
 
 @Component({
   selector: 'app-layout',
@@ -9,7 +10,7 @@ import { BoltMenuItem } from '../bolt-sidenav/bolt-menu-item.model';
 export class LayoutComponent implements OnInit {
   navigationOptions: BoltMenuItem[] = [];
 
-  constructor() { }
+  constructor(private boltSidenavService: BoltSidenavService) { }
 
   ngOnInit() {
     this.loadMenuOptions();
@@ -50,6 +51,7 @@ export class LayoutComponent implements OnInit {
 
       }
     ]
+    this.boltSidenavService.emitMenuOptions.next(this.navigationOptions)
   }
 
 }

@@ -9,6 +9,6 @@ import { HeaderComponent } from './bolt-sidenav/header/header.component';
 @NgModule({
   declarations: [BoltSidenavComponent, MenuItemComponent, HeaderComponent],
   imports: [CommonModule, RouterModule, RootMaterialModule],
-  exports: [BoltSidenavComponent, MenuItemComponent, HeaderComponent],
+  exports: [BoltSidenavComponent, MenuItemComponent, HeaderComponent, RootMaterialModule],
 })
 export class BoltSidenavModule {}
