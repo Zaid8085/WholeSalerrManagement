@@ -1,0 +1,33 @@
+<div class="container">
+    <mat-card class="mat-elevation-z5">
+        <div class="left">
+            <img [src]="imagePath">
+        </div>
+        <div class="right">
+            <div>
+                <h1>The WholeSalerr</h1>
+            </div>
+            <div>
+                <h1>Welcome onboard</h1>
+            </div>
+            <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Email ID</mat-label>
+                  <input type="email" matInput placeholder="Placeholder" [(ngModel)]="emailId">
+                  <mat-icon matSuffix>face</mat-icon>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Password</mat-label>
+                  <input type="password" matInput placeholder="Placeholder" [(ngModel)]="password">
+                  <mat-icon matSuffix>password</mat-icon>
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-raised-button class="primary" (click)="login()">Login</button>
+              </div>
+        </div>
+    </mat-card>
+</div>
+

@@ -15,7 +15,7 @@
             {{menuItem.icon}}</mat-icon>
         </span><span class="menu-item-label" *ngIf="menuItem.url.length == 0">{{ menuItem.label }}</span></a>
       
-        <mat-icon class="align-right">{{ menuItem.url.length == 0 && isGroup(menuItem) && !menuItem.isOpen ? 'chevron_right' : (isGroup(menuItem) ? 'keyboard_arrow_down' : '')}}</mat-icon>      
+        <mat-icon class="align-right" *ngIf="menuItem.children && menuItem.children.length > 0">{{ menuItem.url.length == 0 && isGroup(menuItem) && !menuItem.isOpen ? 'chevron_right' : (isGroup(menuItem) ? 'keyboard_arrow_down' : '')}}</mat-icon>      
     </div>
   </ng-container>
   <div class="menu-item-children" *ngIf="isGroup(menuItem)" [ngStyle]="{ height: childrenHeight(menuItem) }">

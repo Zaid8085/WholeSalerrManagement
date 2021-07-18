@@ -42,19 +42,20 @@ export class AddProductComponent implements OnInit, OnChanges {
     Expiry_date: [{ value: '', disabled: true }, Validators.required],
   });
   constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    // console.log(this.tutorialsRef)
+    // this.tutorialsRef.snapshotChanges().subscribe(data => {
+    //   console.log(data);
+    // });
+  }
+
   ngOnChanges(): void {
     this.addform.controls['Select_Category'].valueChanges.subscribe(data => {
       console.log(data)
     })
   }
 
-
-  ngOnInit(): void {
-
-
-    console.log(this.addform.value)
-
-  }
   onSelection(e) {
     console.log(e)
     this.addform.controls['Product_name'].enable();
@@ -78,5 +79,6 @@ export class AddProductComponent implements OnInit, OnChanges {
     this.addform.reset()
   }
 
+  
 }
 

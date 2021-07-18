@@ -1,5 +1,24 @@
-<div class="header ">
-    <mat-icon >
-        add_shopping_cart</mat-icon>
-    <span>Add Products</span>   
+<div fxFlex fxLayout="row" fxLayoutAlign="start center" class="header mat-elevation-z5">
+    <div fxFlex="30" class="header-left">
+            <mat-icon>{{menuItem.icon}}</mat-icon>
+            <span>{{menuItem.label}}</span>
+    </div>
+    <div fxFlex="30" class="multicolortext">
+            <!-- MOR Analytics - Antology -->
+    </div>
+    <div fxFlex="40" class="header-right">
+            <button [matMenuTriggerFor]="menu" mat-fab aria-label="Example icon button with a bookmark icon">
+                    <mat-icon>face</mat-icon>
+            </button>
+            <label>Syed Zaid Ali</label>
+            <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Settings
+                            <mat-icon class="menu-icons">settings</mat-icon>
+                    </button>
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item (click)="logout()">Logout
+                            <mat-icon class="menu-icons">logout</mat-icon>
+                    </button>
+            </mat-menu>
+    </div>
 </div>

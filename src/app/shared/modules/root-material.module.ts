@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +14,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+
 const modules: any = [
   MatButtonModule,
   MatCardModule,
@@ -24,7 +28,11 @@ const modules: any = [
   MatSnackBarModule,
   MatIconModule,
   MatTableModule,
-  MatSidenavModule
+  MatSidenavModule,
+  FormsModule,
+  MatSnackBarModule,
+  MatDividerModule,
+  MatMenuModule
 ];
 @NgModule({
   imports: modules,
