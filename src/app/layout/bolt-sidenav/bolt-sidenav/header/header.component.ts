@@ -1,7 +1,11 @@
 import { LiteralMapEntry } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { DistributorEntryComponent } from 'src/app/routes/distributor-entry/distributor-entry.component';
-
+import { BoltMenuItem } from '../../bolt-menu-item.model';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { BoltSidenavService } from '../../bolt-sidenav.service';
+import { Router , ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
