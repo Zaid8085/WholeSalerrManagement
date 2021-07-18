@@ -1,106 +1,120 @@
-<div class="container">
-  <mat-card class="mat-elevation-z5"> 
-    <div class="parent-div"> 
+<form [formGroup]="addform" (ngSubmit)="onSubmit()">
+  <mat-card class="mat-elevation-z5">
+    <div class="parent-div1">
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Select Catergory</mat-label>
+          <mat-select formControlName="Select_Catergory" (ngModelChange)="onSelection($event)">
+            <mat-option *ngFor="let option of options" [value]="option.Catergory">{{option.Catergory}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="parent-div">
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Product Name</mat-label>
-          <input matInput placeholder="Placeholder">
+          <input matInput placeholder="Placeholder" formControlName="Product_name">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
         </mat-form-field>
       </div>
-      <div> <mat-form-field appearance="legacy">
-        <mat-label>Product Code</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
-      </mat-form-field></div>
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Product Code</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="Product_code">
+          <mat-icon matSuffix>code</mat-icon>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="parent-div"> 
+    <div class="parent-div">
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Brand</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
+          <input matInput placeholder="Placeholder" formControlName="Brand">
+          <mat-icon matSuffix>leaderboard</mat-icon>
         </mat-form-field>
       </div>
-      <div> <mat-form-field appearance="legacy">
-        <mat-label>SKU (s)</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
-      </mat-form-field></div>
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>SKU (s)</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="SKUS">
+          <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="parent-div"> 
+    <div class="parent-div">
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Selling Price</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
+          <input matInput placeholder="Placeholder" formControlName="Selling_price">
+          <mat-icon matSuffix>paid</mat-icon>
         </mat-form-field>
       </div>
-      <div> <mat-form-field appearance="legacy">
-        <mat-label>Cost Price</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
-      </mat-form-field></div>
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Cost Price</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="Cost_price">
+          <mat-icon matSuffix>paid</mat-icon>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="parent-div"> 
+    <div class="parent-div">
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Profit (%)</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
+          <input matInput placeholder="Placeholder" formControlName="Profit">
+          <mat-icon matSuffix>emoji_symbols</mat-icon>
         </mat-form-field>
       </div>
-      <div> <mat-form-field appearance="legacy">
-        <mat-label>Loss (%)</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
-      </mat-form-field></div>
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Loss (%)</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="Loss">
+          <mat-icon matSuffix>emoji_symbols</mat-icon>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="parent-div"> 
+    <div class="parent-div">
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>GST (%)</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
+          <mat-select formControlName="GST">
+            <mat-option *ngFor="let taxe of taxes" [value]="taxe.tin">{{taxe.tin}}</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>emoji_symbols</mat-icon>
         </mat-form-field>
       </div>
-      <div> <mat-form-field appearance="legacy">
-        <mat-label>Total</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
-      </mat-form-field></div>
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Total</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="Total">
+          <mat-icon matSuffix>calculate</mat-icon>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="parent-div"> 
+    <div class="parent-div">
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Quantity</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
+          <mat-select formControlName="Quantity">
+            <mat-option *ngFor="let message of messages" [value]="message.weight">{{message.weight}}</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>production_quantity_limits</mat-icon>
         </mat-form-field>
       </div>
-      <div> <mat-form-field appearance="legacy">
-        <mat-label>Expiry Date</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
-      </mat-form-field></div>
+      <div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Expiry Date</mat-label>
+          <input matInput type="date" placeholder="Placeholder" formControlName="Expiry_date">
+          <mat-icon matSuffix>event_busy</mat-icon>
+        </mat-form-field>
+      </div>
     </div>
     <div class="btn-row">
-      <button mat-raised-button color="basic">Clear</button>
-      <button mat-raised-button class="primary">Save</button>
+      <button mat-raised-button color="basic" (click)="clearInputMethod1()" [disabled]="!addform.valid">Clear</button>
+      <button mat-raised-button class="primary" [disabled]="!addform.valid">Save</button>
     </div>
-   
-    
+
+
   </mat-card>
-</div>
+</form>
