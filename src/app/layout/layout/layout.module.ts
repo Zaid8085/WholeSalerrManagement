@@ -37,6 +37,7 @@ const routes = [
     RouterModule,
     RootMaterialModule,
     BoltSidenavModule,
+    LoginComponent,
     RouterModule.forChild(routes),
   ],
   exports: [LayoutComponent, LayoutContentComponent],

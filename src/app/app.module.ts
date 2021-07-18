@@ -21,7 +21,6 @@ import { DistributorEntryComponent } from './routes/distributor-entry/distributo
 @NgModule({
   declarations: [
     AppComponent,
-    
   ],
   imports: [
   BrowserModule,
@@ -34,7 +33,8 @@ import { DistributorEntryComponent } from './routes/distributor-entry/distributo
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, 
     AngularFireAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000} }
