@@ -1,6 +1,6 @@
 <div class="success-bar-container">
   <div>
-    <span
+    <div
       class="material-icons success-icon"
       [ngClass]="{
         'success-icon': data.type === 'success',
@@ -8,7 +8,7 @@
       }"
     >
       {{ data.type === "success" ? "done_all" : "error_outline" }}
-    </span>
+    </div>
   </div>
   <div>
     <span class="text-msg"
