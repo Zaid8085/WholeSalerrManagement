@@ -4,7 +4,7 @@ import {
   MatSnackBarRef,
   MAT_SNACK_BAR_DATA,
 } from '@angular/material/snack-bar';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -23,7 +23,7 @@ export class NotificationComponent implements OnInit, AfterViewInit {
     this.setSnackbarBorder();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   closeSnackbar() {
     this.snackBarRef.dismiss();

@@ -1,14 +1,14 @@
 <div class="success-bar-container">
   <div>
-    <div
-      class="material-icons success-icon"
+    <span
+    class="material-icons success-icon"
       [ngClass]="{
         'success-icon': data.type === 'success',
         'error-icon': data.type === 'error'
       }"
     >
       {{ data.type === "success" ? "done_all" : "error_outline" }}
-    </div>
+    </span>
   </div>
   <div>
     <span class="text-msg"
