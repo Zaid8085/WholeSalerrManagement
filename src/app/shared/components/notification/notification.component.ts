@@ -3,7 +3,7 @@ import {
   MatSnackBar,
   MatSnackBarRef,
   MAT_SNACK_BAR_DATA,
-} from '@angular/material/snack-bar';
+} from '@angular/material/snack-bar'; 
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-notification',
