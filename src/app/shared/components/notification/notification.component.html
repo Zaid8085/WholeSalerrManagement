@@ -5,14 +5,13 @@
       [ngClass]="{
         'success-icon': data.type === 'success',
         'error-icon': data.type === 'error'
-      }"
-    >
+      }">
       {{ data.type === "success" ? "done_all" : "error_outline" }}
     </span>
   </div>
   <div>
     <span class="text-msg"
-      ><strong>{{ data.type === "success" ? "Success: " : "Error: " }}</strong>
+     ><strong>{{ data.type === "success" ? "Success: " : "Error: " }}</strong>
       {{ data.customMsg }}</span
     >
   </div>
