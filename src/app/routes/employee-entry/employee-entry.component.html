@@ -1,0 +1,86 @@
+<form [formGroup]="employeeform" (ngSubmit)="onSubmit()">
+    <mat-card class="mat-elevation-z5">
+        <div class="parent-div">
+            <div>
+              <mat-form-field appearance="legacy">
+                <mat-label>Employee ID</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="Emp_Id">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="legacy">
+                <mat-label>Employee Name</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="Emp_name">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              </mat-form-field>
+            </div>
+        </div>
+            <div class="parent-div">
+              <div>
+              <mat-form-field appearance="legacy">
+                <mat-label>Emp.role</mat-label>
+                <input matInput placeholder="Emp. role" formControlName="Emp_role">
+              </mat-form-field>
+            </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="address" maxlength="50">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Email</mat-label>
+                    <input matInput  placeholder="Placeholder" type="email" formControlName="email">
+                    <mat-icon matSuffix>code</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="mobile_number" maxlength="10">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Salary</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="salary">
+                    <mat-icon matSuffix>code</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Joining date</mat-label>
+                    <input matInput placeholder="Select Date" type="date" formControlName="joining_date" mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Aadhar Card Number</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="aadhar_card" min="12" maxlength="12">
+                    <mat-icon matSuffix>code</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Pan Card</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="pan_card">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="btn-row">
+                <button mat-raised-button color="basic" (click)="clearInputMethod1()">Clear</button>
+                <button mat-raised-button class="primary">Save</button>
+              </div>
+    </mat-card>
+</form>

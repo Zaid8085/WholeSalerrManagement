@@ -31,7 +31,7 @@ export class LayoutComponent implements OnInit {
       {
         icon: 'face', label: 'Employee', route: './kjk', url: '', title: 'Employee', disabled: true, isOpen: true, expandPriority: false,
         children: [
-          { icon: 'list', label: 'Employee Entry', route: './buttons', url: '', title: 'Employee Entry', disabled: false },
+          { icon: 'list', label: 'Employee Entry', route: 'employee-entry', url: '', title: 'Employee Entry', disabled: false },
           { icon: 'filter_list', label: 'Employee Details', route: './buttons', url: '', title: 'Employee Details', disabled: false },
 
         ]

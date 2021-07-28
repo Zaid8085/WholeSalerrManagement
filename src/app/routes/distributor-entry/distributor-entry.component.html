@@ -1,1 +1,120 @@
-<p>distributor-entry works!</p>
+<form [formGroup]="distributorform" (ngSubmit)="onSubmit()">
+    <mat-card class="mat-elevation-z5">
+        <div class="parent-div1">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Distributor ID</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Distributor_Id">
+                    <mat-icon matSuffix>perm_identity</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Distributor Name</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Distributor_name">
+                    <mat-icon matSuffix>badge</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="address">
+                    <mat-icon matSuffix>location_city</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Mobile No.</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Mobile">
+                    <mat-icon matSuffix>phone_android</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Email Address</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="email">
+                    <mat-icon matSuffix>email</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Dealer Name</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="dealer_person_name">
+                    <mat-icon matSuffix>badge</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>MRP</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Product_MRP">
+                    <mat-icon matSuffix>paid</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Product Amount.</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Product_amount">
+                    <mat-icon matSuffix>paid</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Quantity</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Quantity">
+                    <mat-icon matSuffix>production_quantity_limits</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Total_Amount</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Total_Amount">
+                    <mat-icon matSuffix>money</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Selling Price</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Selling_price">
+                    <mat-icon matSuffix>badge</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Profit</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Profit">
+                    <mat-icon matSuffix>emoji_symbols</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="parent-div">
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Purchase Date</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Purchase_Date">
+                    <mat-icon matSuffix>date_range</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="City">
+                    <mat-icon matSuffix>location_city</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="btn-row">
+                <button mat-raised-button color="basic" (click)="clearInputMethod1()">Clear</button>
+                <button mat-raised-button class="primary" [disabled]="!distributorform.valid">Save</button>
+              </div>
+    </mat-card>
+</form>

@@ -16,9 +16,11 @@ import { NotificationComponent } from './shared/components/notification/notifica
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DistributorEntryComponent } from './routes/distributor-entry/distributor-entry.component';
+import { EmployeeEntryComponent } from './routes/employee-entry/employee-entry.component';
 @NgModule({
   declarations: [
     AppComponent,
+    NotificationComponent,
   ],
   imports: [
   BrowserModule,

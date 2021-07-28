@@ -28,6 +28,13 @@ const routes = [
             (m) => m.DistributorEntryModule
           ),
       },
+      {
+        path: 'employee-entry',
+        loadChildren: () =>
+          import('../../routes/employee-entry/employee-entry.module').then(
+            (m) => m.EmployeeEntryModule
+          ),
+      },
     ]
   },
 ];
@@ -38,9 +45,8 @@ const routes = [
     RouterModule,
     RootMaterialModule,
     BoltSidenavModule,
-    LoginComponent,
     RouterModule.forChild(routes),
   ],
- 
+
 })
 export class LayoutModule {}
