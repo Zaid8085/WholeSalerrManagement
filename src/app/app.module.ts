@@ -15,11 +15,12 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { NotificationComponent } from './shared/components/notification/notification.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DistributorEntryComponent } from './routes/distributor-entry/distributor-entry.component';
 import { SpiTablesModule } from "./shared/components/spi-tables/spi-tables.module";
+
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
     NotificationComponent
   ],
   imports: [

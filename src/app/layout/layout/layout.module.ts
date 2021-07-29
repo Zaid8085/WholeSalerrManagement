@@ -36,10 +36,24 @@ const routes = [
           ),
       },
       {
+        path: 'distributor-details',
+        loadChildren: () =>
+          import('../../routes/distributor-details/distributor-details.module').then(
+            (m) => m.DistributorDetailsModule
+          ),
+      },
+      {
         path: 'employee-entry',
         loadChildren: () =>
           import('../../routes/employee-entry/employee-entry.module').then(
             (m) => m.EmployeeEntryModule
+          ),
+      },
+      {
+        path: 'employee-details',
+        loadChildren: () =>
+          import('../../routes/employee-details/employee-details.module').then(
+            (m) => m.EmployeeDetailsModule
           ),
       },
     ]
