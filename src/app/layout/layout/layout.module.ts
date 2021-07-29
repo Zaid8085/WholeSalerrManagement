@@ -10,35 +10,43 @@ import { LayoutComponent } from './layout.component';
 import { LoginComponent } from '../../login/login/login.component';
 
 const routes = [
-  { path: '', component: LayoutComponent, children: [
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-    { path: 'dashboard', component: DashboardComponent },
-    {
-      path: 'add-product',
-      loadChildren: () =>
-        import('../../routes/add-product/add-product.module').then(
-          (m) => m.AddProductModule
-        ),
-    },
-    {
-      path: 'product-details',
-      loadChildren: () =>
-        import('../../routes/product-details/product-details.module').then(
-          (m) => m.ProductDetailsModule
-        ),
-    },
-   ] 
-  },
   {
-    path: 'distributor-entry',
-    loadChildren: () =>
-      import('../../routes/distributor-entry/distributor-entry.module').then(
-        (m) => m.DistributorEntryModule
-      ),
+    path: '', component: LayoutComponent, children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'add-product',
+        loadChildren: () =>
+          import('../../routes/add-product/add-product.module').then(
+            (m) => m.AddProductModule
+          ),
+      },
+      {
+        path: 'product-details',
+        loadChildren: () =>
+          import('../../routes/product-details/product-details.module').then(
+            (m) => m.ProductDetailsModule
+          ),
+      },
+      {
+        path: 'distributor-entry',
+        loadChildren: () =>
+          import('../../routes/distributor-entry/distributor-entry.module').then(
+            (m) => m.DistributorEntryModule
+          ),
+      },
+      {
+        path: 'employee-entry',
+        loadChildren: () =>
+          import('../../routes/employee-entry/employee-entry.module').then(
+            (m) => m.EmployeeEntryModule
+          ),
+      },
+    ]
   },
 ];
 @NgModule({
-  declarations: [LayoutComponent, LayoutContentComponent],
+  declarations: [LayoutComponent,LayoutContentComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -46,6 +54,6 @@ const routes = [
     BoltSidenavModule,
     RouterModule.forChild(routes),
   ],
-  exports: [LayoutComponent, LayoutContentComponent],
+
 })
 export class LayoutModule {}

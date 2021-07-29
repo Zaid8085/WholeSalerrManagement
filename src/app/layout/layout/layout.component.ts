@@ -31,15 +31,15 @@ export class LayoutComponent implements OnInit {
       {
         icon: 'face', label: 'Employee', route: './kjk', url: '', title: 'Employee', disabled: true, isOpen: true, expandPriority: false,
         children: [
-          { icon: 'list', label: 'Employee Entry', route: './buttons', url: '', title: 'Employee Entry', disabled: false },
+          { icon: 'list', label: 'Employee Entry', route: 'employee-entry', url: '', title: 'Employee Entry', disabled: false },
           { icon: 'filter_list', label: 'Employee Details', route: './buttons', url: '', title: 'Employee Details', disabled: false },
 
         ]
       },
       {
-        icon: 'supervised_user_circle', label: 'Distributor', route: './hh', url: '', title: 'Distributor', disabled: true, isOpen: false, expandPriority: false,
+        icon: 'supervised_user_circle', label: 'Distributor', route: 'distributor-entry', url: '', title: 'Distributor', disabled: true, isOpen: false, expandPriority: false,
         children: [
-          { icon: 'add_icon', label: 'Distributor Entry', route: './buttons', url: '', title: 'Distributor Entry', disabled: false },
+          { icon: 'add_icon', label: 'Distributor Entry', route: 'distributor-entry', url: '', title: 'Distributor Entry', disabled: false },
           { icon: 'supervisor_account', label: 'Distributor Details', route: './buttons', url: '', title: 'Distributor Details', disabled: false },
         ]
       },
