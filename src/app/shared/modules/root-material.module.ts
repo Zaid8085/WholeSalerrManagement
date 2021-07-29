@@ -16,7 +16,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSelectModule } from "@angular/material/select";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 const modules: any = [
   MatButtonModule,
   MatCardModule,
@@ -32,7 +34,10 @@ const modules: any = [
   FormsModule,
   MatSnackBarModule,
   MatDividerModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSelectModule,
+  FlexLayoutModule,
+  MatProgressSpinnerModule,
 ];
 @NgModule({
   imports: modules,

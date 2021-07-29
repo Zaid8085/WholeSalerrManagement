@@ -1,0 +1,16 @@
+<mat-icon #menuBtn [matMenuTriggerFor]="menu" class="material-icons">keyboard_arrow_right</mat-icon>
+
+
+<mat-menu mat-menu-panel #menu="matMenu" yPosition="below" xPosition="before">
+    <div class="show-more-columns" fxLayout="column" *ngIf="showDetails && rowData && labels">
+        <div class="header" fxLayout="row" fxLayoutAlign="start center">
+            <span fxFlex="50">Column Name</span>
+            <span fxFlex="50">Data</span>
+        </div>
+        <div class="detail-items" [fxFlex]="flexPercentage" fxLayout="row" fxLayoutAlign="start center" *ngFor="let label of labels">
+            <span fxFlex="50">{{label.display}}</span>
+            <span fxFlex="50">{{rowData[label.bind]}}</span>
+        </div>
+    </div>
+
+</mat-menu>

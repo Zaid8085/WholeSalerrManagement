@@ -55,3 +55,28 @@ form {
   background-image: linear-gradient(#f13737, #ff7177);
   color: white;
 }
+.sku {
+  // width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  .input {
+    width: 80% !important;
+  }
+  .dropdown {
+    width: 20% !important;
+    position: relative;
+    bottom: 14px;
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      margin: 0px !important;
+    }
+    
+    ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 0px !important; 
+    }
+  }
+}
+
+.loader {
+  opacity: 0.3;
+  pointer-events: none;
+}

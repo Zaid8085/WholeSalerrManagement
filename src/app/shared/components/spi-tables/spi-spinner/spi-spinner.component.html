@@ -1,0 +1,8 @@
+<ng-container *ngIf="spiTableSettings === undefined">
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="this.spiTableSettings === undefined">
+    <mat-spinner [diameter]="70"></mat-spinner>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="this.spiTableSettings === undefined">
+    <p style="color: #000000;">Loading data... Please wait.</p>
+  </div>
+</ng-container>

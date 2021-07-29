@@ -1,0 +1,36 @@
+@import '../../../../../assets/styles/bolt-material-theme.scss';
+
+ ::ng-deep .mat-menu-panel {
+    min-width: 300px !important;
+    max-width: 500px !important;
+}
+.show-more-columns{
+    background-color: $wsm-white;
+    color: $wsm-black;
+    padding: 15px;
+    overflow-y: none;
+    overflow-x: auto;
+    min-height: 30%;
+}
+
+.detail-items{
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+    min-width: 300px;
+    span {
+        padding: 0 10px;
+        
+    };
+}
+.header {
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+    min-width: 300px;
+    font-size: 15px;
+    font-weight: 500;
+    color: $wsm-blue;
+    background-color: whitesmoke;
+     span {
+        padding: 0 10px; 
+    }
+}

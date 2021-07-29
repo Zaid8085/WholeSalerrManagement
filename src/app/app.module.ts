@@ -18,13 +18,14 @@ import { NotificationComponent } from './shared/components/notification/notifica
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DistributorEntryComponent } from './routes/distributor-entry/distributor-entry.component';
+import { SpiTablesModule } from "./shared/components/spi-tables/spi-tables.module";
 @NgModule({
   declarations: [
     AppComponent,
-    
+    NotificationComponent
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     RootMaterialModule,
@@ -34,7 +35,12 @@ import { DistributorEntryComponent } from './routes/distributor-entry/distributo
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, 
     AngularFireAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SpiTablesModule
+  ],
+  exports: [
+    SpiTablesModule,
+    NotificationComponent
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000} }

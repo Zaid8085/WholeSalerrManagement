@@ -1,0 +1,36 @@
+<ng-container>
+  <div fxFlex fxLayout="row" fxLayoutAlign="start center" class="pagination">
+    <div fxFlex="20" style="text-align: left; min-height: 56px;">
+      <mat-form-field class="filter" appearance="standard">
+        <input [(ngModel)]="filter" id="filter--{{spiTableSettings.tableId}}" matInput [disabled]="!isUserTyping && isTableInOperation()"
+          (focus)="onFilterFocus()" (blur)="onFilterBlur()" (keyup)="applyFilter($event.target.value)" placeholder="Filter All Columns"
+          matTooltip="Only show rows that contain this text" matTooltipPosition="below">
+        <button mat-icon-button matSuffix (click)="clearData()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div fxFlex="80" style="text-align: right; min-height: 56px;">
+      <span>Items per page: </span>
+      <mat-form-field class="dropdown" appearance="standard">
+        <mat-select [(value)]="spiTableSettings.pagination.numberPerPage" name="numberPerPage" (selectionChange)="changePageSize()"
+          [disabled]="isTableInOperation()">
+          <mat-option *ngFor="let option of spiTableSettings.pagination.pageSizeOptions" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="count">{{this.begin + (this.spiTableSettings.tableData.length === 0 ? 0 : 1)}} - {{this.spiTableSettings.tableData.length
+        === 0 ? 0 : (this.end > this.spiTableSettings.tableData.length ? this.spiTableSettings.tableData.length : this.end)}}
+        of {{this.spiTableSettings.tableData.length}}</span>
+      <button [disabled]="isPreviousDisable || isTableInOperation()" mat-button (click)="previousPage()">
+        <mat-icon [ngStyle]="{'color': (isPreviousDisable || isTableInOperation()) ? 'lightgrey' : '#009fdb', 'cursor': (isPreviousDisable || isTableInOperation()) ? 'not-allowed' : 'pointer'}"
+          id="previous">navigate_before
+        </mat-icon>
+      </button>
+      <button [disabled]="isNextDisable || isTableInOperation()" mat-button (click)="nextPage()">
+        <mat-icon [ngStyle]="{'color': (isNextDisable || isTableInOperation()) ? 'lightgrey' : '#009fdb', 'cursor': (isNextDisable || isTableInOperation()) ? 'not-allowed' : 'pointer'}"
+          id="next">navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>

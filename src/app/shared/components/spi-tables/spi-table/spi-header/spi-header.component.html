@@ -1,0 +1,7 @@
+<tr>
+  <td class="footer" [attr.colspan]="getTotalColumns()">
+    <spi-pagintion [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)"></spi-pagintion>
+  </td>
+</tr>
+
+<ng-content></ng-content>

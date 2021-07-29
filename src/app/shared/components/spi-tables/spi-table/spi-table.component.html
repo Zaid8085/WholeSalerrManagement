@@ -1,0 +1,12 @@
+<ng-content select="[spi-header]"></ng-content>
+<!-- <tbody>   -->
+<ng-content select="[spi-body]"></ng-content>
+
+<tr *ngIf="this.spiTableSettings.tableData.length === 0">
+  <td class="footer" [attr.colspan]="getTotalColumns()">
+    <div style="height: 50px; font-size: 20px;" fxFill fxLayout="row" fxLayoutAlign="center center">
+      <mat-icon class="error-icon">error_outline</mat-icon>
+      No Results Found
+    </div>
+  </td>
+</tr>

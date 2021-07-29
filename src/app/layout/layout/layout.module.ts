@@ -20,6 +20,13 @@ const routes = [
           (m) => m.AddProductModule
         ),
     },
+    {
+      path: 'product-details',
+      loadChildren: () =>
+        import('../../routes/product-details/product-details.module').then(
+          (m) => m.ProductDetailsModule
+        ),
+    },
    ] 
   },
   {

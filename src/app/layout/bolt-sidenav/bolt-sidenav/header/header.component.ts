@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { BoltSidenavService } from '../../bolt-sidenav.service';
 import { Router , ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationComponent } from 'src/app/shared/components/notification/notification.component';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

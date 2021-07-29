@@ -1,0 +1,87 @@
+ @import "../../../../../assets/styles/bolt-material-theme.scss";
+
+.spi-tables-style {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100% !important;
+}
+
+.spi-tables-style td,
+.spi-tables-style th {
+  border: 1px solid #ddd !important;
+  padding: 8px;
+  text-align: left;
+}
+
+.spi-tables-style tr {
+  height: 48px;
+}
+
+.spi-tables-style tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.spi-tables-style tr:hover {
+  background-color: #ddd;
+}
+
+.spi-tables-style th {
+  min-width: 100px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left !important;
+  background-image: linear-gradient(#f13737, #ff7177);
+  color: white;
+  padding-right: 24px;
+  position: relative;
+  font-weight: 500;
+}
+
+th#childRowColumn, th#show-more-columns {
+  min-width: 10px !important;
+  width: 10px !important;
+}
+
+.header-width {
+  width: 10px !important;
+}
+
+td.footer {
+  padding: 0 !important;
+}
+
+.sort-icon {
+  opacity: 0;
+  position: absolute;
+  padding: 0 -5px;
+  top: 12px;
+  right: 0px;
+}
+
+th:hover {
+  .sort-icon {
+    opacity: 0.5 !important;
+    position: absolute;
+    padding: 0 -5px;
+    top: 12px;
+    right: 0px;
+    cursor: pointer;
+
+    span {
+      position: relative;
+    }
+  } 
+}
+
+mat-icon.error-icon {
+  padding-right: 5px !important;
+  font-size: 25px !important;
+}
+
+th {
+  background: white;
+  position: sticky !important;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}

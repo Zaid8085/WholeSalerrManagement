@@ -1,0 +1,52 @@
+@import "../../../../../../assets/styles/wsm-color-variables.scss";
+
+:host ::ng-deep .mat-form-field-wrapper:not(mat-form-field.filter) {
+    border: none !important;
+    border-radius: 0px !important;
+    padding-bottom: 15px !important;
+}
+
+mat-icon {
+    position: relative;
+    // top: 11px;
+    color: $wsm-blue;
+    width: 28px;
+    fill: currentColor;
+}
+.pagination {
+    border-top: 1px solid #dcdcdc;
+    background-color: #f9f9f9;
+}
+span {
+    margin: 0 5px;
+    font-size: 12px;
+    color: $wsm-blue;
+}
+.dropdown {
+    width: 50px;
+    padding: 0 15px 0 0;
+}
+button {
+    background: none;
+    border: hidden;
+    cursor: pointer;
+    outline: none;
+}
+span.count {
+    position: relative;
+    // top: 2px;
+    color: darkgray;
+}
+.filter {
+    padding: 5px 0 0px 15px;
+    position: relative;
+    top: -2px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+mat-select:disabled {
+    cursor: not-allowed;
+}

@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { NotificationComponent } from '../../shared/components/notification/notification.component';
-import {
-  MatSnackBar,
-  MatSnackBarRef,
-  MAT_SNACK_BAR_DATA,
-} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public afAuth: AngularFireAuth, private snackbar: MatSnackBar, private route: Router ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login() {
     console.log(this.emailId + ' ' + this.password)
