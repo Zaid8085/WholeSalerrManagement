@@ -3,6 +3,8 @@ import { SpiTableColumn } from 'src/app/shared/components/spi-tables/spi-table-c
 import { SpiTableService } from 'src/app/shared/components/spi-tables/spi-table.service';
 import { SpiColumnType } from 'src/app/shared/components/spi-tables/spi-table/spi-column-type.model';
 import * as _ from 'lodash'
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { SpiTableSettings } from 'src/app/shared/components/spi-tables/Spi-table/Spi-table-settings.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 @Component({
@@ -14,8 +16,8 @@ export class DistributorDetailsComponent implements OnInit {
   displayedColumns = [
     new SpiTableColumn('Distributor Id', 'Distributor_Id', SpiColumnType.Number),
     new SpiTableColumn('Distributor name', 'Distributor_name'),
-    new SpiTableColumn('address', 'address', SpiColumnType.Number),
-    new SpiTableColumn('Mobile', 'Mobile'),  
+    new SpiTableColumn('address', 'address'),
+    new SpiTableColumn('Mobile', 'Mobile', SpiColumnType.Number),  
     new SpiTableColumn('email', 'email'),  
     new SpiTableColumn('dealer person name', 'dealer_person_name'),  
     new SpiTableColumn('Product MRP', 'Product_MRP'),  
@@ -30,22 +32,27 @@ export class DistributorDetailsComponent implements OnInit {
   tableData = [];
   spiTableSettings: any;
   productDetails: any[];
-  constructor(private spiTableService: SpiTableService, public afAuth: AngularFirestore) { }
+  constructor(private spiTableService: SpiTableService,private matDialog: MatDialog, private angularFirestore: AngularFirestore, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getDetailsOfDistributor();
   }
   getDetailsOfDistributor() {
-    this.afAuth.collection('Distributor_Details').snapshotChanges().subscribe(data => {
+    this.angularFirestore.collection('productDetails').snapshotChanges().subscribe(data => {
      console.log(data)
-     data.map(e => {
-         this.tableData.push(e.payload.doc.data());
+     this.tableData = [];
+     data.forEach(e => {
+       const obj = e.payload.doc.data();
+       obj['delete'] = 'delete';
+       obj['docId'] = e.payload.doc.id;
+         this.tableData.push(obj);
      })
      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'distributor-details', false);
-   })
-
-   // this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'distributor-details', true);      
+   })    
  }
+ deleteExpense(docId: any) {
+  const msg = 'Are you sure you want to delete this expense? Click Yes to delete and No to cancel'
+}
 
  checkboxchecked(checked: any) {
    alert(checked);

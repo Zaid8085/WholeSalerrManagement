@@ -5,6 +5,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import firebase from 'firebase/app';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificationComponent } from 'src/app/shared/components/notification/notification.component';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-add-product',
@@ -95,7 +96,7 @@ export class AddProductComponent implements OnInit {
       } else if (profitSP >= sellingPrice) {
         this.addform.controls['Loss'].setValue(0)
         this.addform.controls['Profit'].setValue(10 - this.addform.controls['Discount'].value)
-      }
+      } 
     }
     this.addform.controls['Selling_price'].setValue(profitSP * this.addform.controls['Quantity'].value);
     this.addform.controls['Total'].setValue((profitSP - sellingPrice) * this.addform.controls['Quantity'].value);
