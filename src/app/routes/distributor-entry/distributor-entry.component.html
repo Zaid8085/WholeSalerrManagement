@@ -1,5 +1,5 @@
 <form [formGroup]="distributorform" (ngSubmit)="onSubmit()">
-    <mat-card class="mat-elevation-z5">
+    <mat-card class="mat-elevation-z5" [ngClass]="{'loader': isLoading}">
         <div class="parent-div1">
                 <div>
                   <mat-form-field appearance="legacy">
@@ -92,7 +92,7 @@
                   <mat-form-field appearance="legacy">
                     <mat-label>Profit</mat-label>
                     <input matInput placeholder="Placeholder" formControlName="Profit">
-                    <mat-icon matSuffix>emoji_symbols</mat-icon>
+                    <mat-icon matSuffix >emoji_symbols</mat-icon>
                   </mat-form-field>
                 </div>
               </div>

@@ -32,7 +32,7 @@ export class LayoutComponent implements OnInit {
         icon: 'face', label: 'Employee', route: './kjk', url: '', title: 'Employee', disabled: true, isOpen: true, expandPriority: false,
         children: [
           { icon: 'list', label: 'Employee Entry', route: 'employee-entry', url: '', title: 'Employee Entry', disabled: false },
-          { icon: 'filter_list', label: 'Employee Details', route: './buttons', url: '', title: 'Employee Details', disabled: false },
+          { icon: 'groups', label: 'Employee Details', route: 'employee-details', url: '', title: 'Employee Details', disabled: false },
 
         ]
       },
@@ -40,7 +40,7 @@ export class LayoutComponent implements OnInit {
         icon: 'supervised_user_circle', label: 'Distributor', route: './dummy', url: '', title: 'Distributor', disabled: true, isOpen: false, expandPriority: false,
         children: [
           { icon: 'add_icon', label: 'Distributor Entry', route: 'distributor-entry', url: '', title: 'Distributor Entry', disabled: false },
-          { icon: 'supervisor_account', label: 'Distributor Details', route: './buttons', url: '', title: 'Distributor Details', disabled: false },
+          { icon: 'supervisor_account', label: 'Distributor Details', route: 'distributor-details', url: '', title: 'Distributor Details', disabled: false },
         ]
       },
       {

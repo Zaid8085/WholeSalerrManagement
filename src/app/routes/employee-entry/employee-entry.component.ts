@@ -1,7 +1,9 @@
 import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, NgControl, Validators } from '@angular/forms';
-
+import { AngularFirestore } from "@angular/fire/firestore";
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationComponent } from 'src/app/shared/components/notification/notification.component';
 @Component({
   selector: 'app-employee-entry',
   templateUrl: './employee-entry.component.html',
@@ -10,24 +12,48 @@ import { FormControl, FormGroup, FormBuilder, NgControl, Validators } from '@ang
 export class EmployeeEntryComponent implements OnInit {
 
   employeeform: FormGroup = this.fb.group({
-    Emp_Id: [ '' ,Validators.required,Validators.minLength(3)],
-    Emp_name: [ '' , Validators.required],
-    Emp_role: [ '' , Validators.required],
-    address: [ '' , Validators.required],
-    email: [ '' ,[ Validators.required,Validators.email]],
-    mobile_number: [ '' , Validators.required],
-    salary: [ '' , Validators.required],
-    joining_date: [ '' , Validators.required],
-    aadhar_card: [ '' ,Validators.required],
-    pan_card: [ '' , Validators.required],
+    Employee_Id: [ '' ,Validators.required,Validators.minLength(3)],
+    Employee_name: [ '' , Validators.required],
+    Employee_role: [ '' , Validators.required],
+    Address: [ '' , Validators.required],
+    Email: [ '' ,[ Validators.required,Validators.email]],
+    Mobile_number: [ '' , Validators.required],
+    Salary: [ '' , Validators.required],
+    Joining_date: [ '' , Validators.required],
+    Aadhar_card: [ '' ,Validators.required],
+    Pan_card: [ '' , Validators.required],
 
   });
-  constructor(private fb: FormBuilder) { }
+  policies: any[];
+  categories: any[];
+  selectedSubCategory: any[] = [];
+  selectedDocId: any;
+  mesuaringUnits: any[] = [];
+  isLoading: boolean;
+  constructor(private fb: FormBuilder, public afAuth: AngularFirestore, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
   onSubmit() {
     console.warn(this.employeeform.value)
+    this.isLoading = true;
+    this.afAuth.collection('Employee_Details').add(this.employeeform.value).then( data => {
+      this.snackbar.openFromComponent(NotificationComponent, {
+        data: {
+          customMsg: 'Employee details added successfully.',
+          type: 'success',
+        },
+      });
+      this.isLoading = false;
+    }).catch(error => {
+      this.snackbar.openFromComponent(NotificationComponent, {
+        data: {
+          customMsg: error.message,
+          type: 'error',
+          },
+        });
+      this.isLoading = false;
+  })
   }
   clearInputMethod1() {
     this.employeeform.reset()

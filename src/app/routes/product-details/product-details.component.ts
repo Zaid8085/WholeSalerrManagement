@@ -25,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
     new SpiTableColumn('SYMBOL', 'GST'),  
     new SpiTableColumn('SYMBOL', 'Total'),  
     new SpiTableColumn('SYMBOL', 'Quantity'),  
-    new SpiTableColumn('SYMBOL', 'Expiry_date'),  
+    new SpiTableColumn('SYMBOL', 'MRP'),  
     new SpiTableColumn('SYMBOL', 'Expiry_date'),  
   ];
   tableData = [];

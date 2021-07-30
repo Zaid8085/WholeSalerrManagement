@@ -148,7 +148,6 @@ export class AddProductComponent implements OnInit {
     console.warn(this.addform.value)
     this.isLoading = true;
     this.afAuth.collection('Product_List').add(this.addform.value).then( data => {
-      this.isLoading = false;
       this.snackbar.openFromComponent(NotificationComponent, {
         data: {
           customMsg: 'Product added successfully.',
