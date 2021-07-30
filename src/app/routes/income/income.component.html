@@ -1,0 +1,68 @@
+<div class="container">
+    <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()" >
+        <mat-card class="mat-elevation-z5"> 
+            <label>Enter Expenses</label>
+            <div class="parent-div">
+                <div>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Expense Type</mat-label>
+                        <mat-select formControlName="expenseType">
+                          <mat-option *ngFor="let expense of expenseTypes" [value]="expense.value.Expense_Name">{{expense.value.Expense_Name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Amount</mat-label>
+                      <input matInput type="number" placeholder="Placeholder" formControlName="amount">
+                      <mat-icon matSuffix>paid</mat-icon>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Date</mat-label>
+                      <input matInput type="date" placeholder="Placeholder" formControlName="date">
+                      <!-- <mat-icon matSuffix>paid</mat-icon> -->
+                    </mat-form-field>
+                  </div>
+              </div>
+              <div class="btn-row">
+                <button mat-raised-button color="basic" (click)="clear()" [disabled]="expenseForm.untouched">Clear</button>
+                <button mat-raised-button class="primary" [disabled]="!expenseForm.valid">Save</button>
+              </div>
+        </mat-card>
+    </form>
+    <mat-card class="mat-elevation-z5"> 
+        <label>Expense Details</label>
+        <div id="expense-details-container" *ngIf="spiTableSettings !== undefined">
+            <table spi-table id="expense-details" [spiTableSettings]="spiTableSettings">
+              <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">
+                <tr>
+                    <ng-container *ngFor="let column of displayedColumns">
+                        <th *ngIf="column.bind !== 'delete'"  spi-cell>{{column.display}}</th>
+                        <th *ngIf="column.bind === 'delete'" class="delete-header" spi-cell>{{column.display}}</th>
+                    </ng-container>
+                  
+                </tr>
+              </thead>
+              <tbody spi-body>
+                <ng-container *ngFor="let data of tableData; let i = index;">
+                  <tr spi-row [spiTableSettings]="spiTableSettings" *ngIf="i < spiTableSettings.pagination.numberPerPage">
+                    <ng-container *ngFor="let column of displayedColumns">
+                      <td spi-cell class="w-40" *ngIf="column.bind !== 'delete'">
+                        {{data[column.bind]}}
+                      </td>
+                      <td spi-cell class="w-10" *ngIf="column.bind === 'delete'">
+                        <mat-icon class="delete-icon" (click)="deleteExpense(data.docId)"> {{data[column.bind]}}</mat-icon>
+                      </td> 
+                    </ng-container>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+    </mat-card>
+</div>
+
+
+

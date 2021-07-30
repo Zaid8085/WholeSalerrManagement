@@ -42,6 +42,13 @@ const routes = [
             (m) => m.EmployeeEntryModule
           ),
       },
+      {
+        path: 'income',
+        loadChildren: () =>
+          import('../../routes/income/income.module').then(
+            (m) => m.IncomeModule
+          ),
+      },
     ]
   },
 ];

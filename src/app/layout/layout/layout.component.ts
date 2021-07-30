@@ -37,7 +37,7 @@ export class LayoutComponent implements OnInit {
         ]
       },
       {
-        icon: 'supervised_user_circle', label: 'Distributor', route: 'distributor-entry', url: '', title: 'Distributor', disabled: true, isOpen: false, expandPriority: false,
+        icon: 'supervised_user_circle', label: 'Distributor', route: './dummy', url: '', title: 'Distributor', disabled: true, isOpen: false, expandPriority: false,
         children: [
           { icon: 'add_icon', label: 'Distributor Entry', route: 'distributor-entry', url: '', title: 'Distributor Entry', disabled: false },
           { icon: 'supervisor_account', label: 'Distributor Details', route: './buttons', url: '', title: 'Distributor Details', disabled: false },
@@ -47,7 +47,7 @@ export class LayoutComponent implements OnInit {
         icon: 'file_copy', label: 'Invoicing', route: './bgt', url: '', title: 'Invoicing', disabled: false, isOpen: false, expandPriority: false
       },
       {
-        icon: 'attach_money', label: 'Income', route: './bgt', url: '', title: 'Income', disabled: false, isOpen: false, expandPriority: false,
+        icon: 'attach_money', label: 'Income', route: './income', url: '', title: 'Income', disabled: false, isOpen: false, expandPriority: false,
 
       }
     ]

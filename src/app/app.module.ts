@@ -17,13 +17,16 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DistributorEntryComponent } from './routes/distributor-entry/distributor-entry.component';
 import { SpiTablesModule } from "./shared/components/spi-tables/spi-tables.module";
+import { CommonDialogComponent } from './shared/components/common-dialog/common-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    NotificationComponent
+    NotificationComponent,
+    CommonDialogComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     RootMaterialModule,
@@ -38,7 +41,8 @@ import { SpiTablesModule } from "./shared/components/spi-tables/spi-tables.modul
   ],
   exports: [
     SpiTablesModule,
-    NotificationComponent
+    NotificationComponent,
+    CommonDialogComponent
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000} }

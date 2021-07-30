@@ -1,0 +1,148 @@
+<!-- <mat-card class="mat-elevation-z5">
+  <mat-card-header style=" color: #0cafe9;">
+    <mat-card-title>{{message}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div style="text-align: right;">
+      <button mat-raised-button class="secondary-btn budget-button" (click)="onNoClick()">No</button>
+      <button mat-raised-button color="primary" class="budget-button" [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+    </div>    
+  </mat-card-content>
+</mat-card> -->
+<!-- <div mat-dialog-content>
+  
+ </div>
+ <div mat-dialog-actions>
+   
+ </div> -->
+
+<div *ngIf="!isViewComments" fxFlex fxLayout="column" fxLayoutAlign="space-between stretch" id="common-dialog" [ngClass]="dialogProperty.responsiveTable ? 'dialog-container' : ''">
+  <div fxFlex fxLayout="row" *ngIf="dialogProperty.message.loader" fxLayoutAlign="space-between center" class="dialog-header">
+    <div fxFlex="100" class="loadingScreen">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="dialog-header">
+    <div fxFlex="100" class="message" fxFlex="100" class="message" *ngIf="dialogProperty.message.showElement" [innerHTML]="dialogProperty.message.text">
+    </div>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center" *ngIf="dialogProperty.showError && dialogProperty.showError.showElement">
+    <strong class="error mat-elevation-z3">{{dialogProperty.showError.text}}</strong>
+  </div>
+  <ng-container *ngIf="dialogProperty.inputConfig && dialogProperty.inputConfig.length < 2; else executeAnotherForm">
+    <ng-container *ngFor="let input of dialogProperty.inputConfig">
+      <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="dialog-body">
+        <div fxFlex="100" class="message">
+          <mat-form-field appearance="default" class="dialog-input" *ngIf="input.showInput  && input.inputType == InputType.Input"
+            (click)="$event.stopPropagation()">
+            <mat-label>{{input.label}}</mat-label>
+            <input matInput name="input" [disabled]="input.disabledInput" [(ngModel)]="input.inputText" [required]="input.required" placeholder="{{input.placeholder}}">
+          </mat-form-field>
+          <mat-form-field appearance="default" class="dialog-input" *ngIf="input.showInput  && input.inputType == InputType.Dropdown"
+            (click)="$event.stopPropagation()">
+            <mat-label>{{input.label}}</mat-label>
+            <mat-select [disabled]="input.disabledInput" [(ngModel)]="input.inputText" name="select" [required]="input.required" placeholder="{{input.placeholder}}">
+              <mat-option *ngFor="let item of input.dropdownConfig.options" [value]="item[input.dropdownConfig.valueBind]">
+                {{item[input.dropdownConfig.displayBind]}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="default" class="dialog-input" *ngIf="input.showInput  && input.inputType == InputType.Textarea"
+            (click)="$event.stopPropagation()">
+            <mat-label>{{input.label}}</mat-label>
+            <textarea matInput placeholder="{{input.placeholder}}" [(ngModel)]="input.inputText" [disabled]="input.disabledInput" [required]="input.required"></textarea>
+          </mat-form-field>
+          <div *ngIf="input.showInput  && input.inputType == InputType.ReadOnly" class="read-only">
+            <strong>{{input.label}} : </strong>
+            <span>{{input.inputText}}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-template #executeAnotherForm>
+    <ng-container *ngFor="let inputList of modifiedInputField; let j = index">
+      <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="dialog-body">
+        <ng-container *ngFor="let input of inputList; let i = index;">
+          <div fxFlex="{{getFlex(j)}}" class="message">
+            <mat-form-field appearance="default" class="dialog-input" *ngIf="input.showInput && input.inputType == InputType.Input" (click)="$event.stopPropagation()">
+              <mat-label>{{input.label}}</mat-label>
+              <input matInput name="input" [disabled]="input.disabledInput" [(ngModel)]="input.inputText" [required]="input.required" placeholder="{{input.placeholder}}">
+            </mat-form-field>
+            <mat-form-field appearance="default" class="dialog-input" *ngIf="input.showInput  && input.inputType == InputType.Dropdown"
+              (click)="$event.stopPropagation()">
+              <mat-label>{{input.label}}</mat-label>
+              <mat-select [disabled]="input.disabledInput" [(ngModel)]="input.inputText" name="select" [required]="input.required" placeholder="{{input.placeholder}}" multiple>
+                <mat-option *ngFor="let item of input.dropdownConfig.options" [value]="item[input.dropdownConfig.valueBind]">
+                  {{item[input.dropdownConfig.displayBind]}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="default" [ngClass]="getFlex(j) == 100 ? 'dialog-textarea-100': 'dialog-textarea-50'" *ngIf="input.showInput  && input.inputType == InputType.Textarea"
+              (click)="$event.stopPropagation()">
+              <mat-label>{{input.label}}</mat-label>
+              <textarea matInput placeholder="{{input.placeholder}}" [(ngModel)]="input.inputText" [disabled]="input.disabledInput" [required]="input.required"
+                maxlength="{{input.maxLength}}"></textarea>
+              <mat-hint *ngIf="input.maxLength" align="end">{{input.inputText.length || 0}}/{{input.maxLength}}
+              </mat-hint>
+            </mat-form-field>
+            <!-- <mat-radio-group *ngIf="input.showInput  && input.inputType == InputType.Radio" style="margin-left: 20px;"> -->
+              <mat-radio-button color="primary" *ngIf="input.showInput  && input.inputType == InputType.Radio" style="margin-left: 20px;"
+                [disabled]="input.disabledInput">
+                {{input.label}}
+              </mat-radio-button>
+            <!-- </mat-radio-group> -->
+            <div *ngIf="input.showInput  && input.inputType == InputType.ReadOnly" class="dialog-read">
+              <strong>{{input.label}} : </strong>
+              <span>{{input.inputText}}</span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-template>
+  <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" *ngIf="dialogProperty.responsiveTable">
+    <core-lib-responsive-table style="width: 100%;" [tableColumns]="dialogProperty.responsiveTable.tableColumns" [tableData]="dialogProperty.responsiveTable.tableData"
+      [tableSettings]="dialogProperty.responsiveTable.tableSettings" [tableId]="dialogProperty.responsiveTable.tableId">
+    </core-lib-responsive-table>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" *ngIf="dialogProperty.showComponent && dialogProperty.showComponent.showElement">
+    <ng-template appDynamicComponent></ng-template>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="dialog-footer">
+    <div fxFlex="100" class="btn-row">
+      <button mat-raised-button color="basic" (click)="onClick(true)" *ngIf="dialogProperty.buttonssecondary && dialogProperty.buttonssecondary.showElement">{{dialogProperty.buttonssecondary.text}}</button>
+      <button mat-raised-button  class="primary" (click)="onClick(null)" *ngIf="dialogProperty.buttonsprimary.showElement">{{dialogProperty.buttonsprimary.text}}</button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="isViewComments" fxFlex fxLayout="column" fxLayoutAlign="space-between stretch" id="common-dialog" [ngClass]="dialogProperty.responsiveTable ? 'dialog-container' : ''">
+  <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="dialog-header blackBackground">
+    <div fxFlex="100" class="message" fxFlex="100" class="message" *ngIf="dialogProperty.message.showElement" [innerHTML]="dialogProperty.message.text">
+    </div>
+  </div>
+  <ng-container *ngIf="dialogProperty.inputConfig">
+    <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="dialog-body ">
+      <div fxFlex="100" class="message">
+        <div class="read-only message-content" *ngFor="let input of dialogProperty.inputConfig">
+          <div *ngIf="input.showInput  && input.inputType == InputType.ReadOnly">
+            <div>
+              <strong *ngIf="input.label.length>0">{{input.label}} : </strong>
+            </div>
+            <br>
+            <span [innerHTML]="input.inputText"></span>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" class="dialog-footer whiteBackground">
+    <div fxFlex="100" class="btn-row">
+      <button mat-raised-button class="basic" (click)="onClick(true)" *ngIf="dialogProperty.buttonssecondary && dialogProperty.buttonssecondary.showElement">{{dialogProperty.buttonssecondary.text}}</button>
+      <button mat-raised-button class="primary" (click)="onClick(null)" *ngIf="dialogProperty.buttonsprimary.showElement">{{dialogProperty.buttonsprimary.text}}</button>
+    </div>
+  </div>
+</div>

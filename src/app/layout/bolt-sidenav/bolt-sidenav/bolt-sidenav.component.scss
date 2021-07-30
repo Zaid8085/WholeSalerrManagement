@@ -8,6 +8,7 @@ mat-sidenav-container {
     height: 100%;
     flex-direction: column;
     overflow: hidden;
+    background-color: lightgray;
     .logo {
       //background: url(../../../../assets/sidenav/images/logos/bolt-light.svg) no-repeat;
       height: 36px;
@@ -59,6 +60,7 @@ mat-sidenav-content {
   display: flex;
   flex-direction: column;
   margin-left: 4em;
+  overflow: auto;
 }
 
 .header-text {
@@ -79,7 +81,7 @@ mat-sidenav-content {
   min-height: 64px;
   padding: 0 16px 0 24px;
   color: rgba(255, 255, 255, 0.87);
-
+  border-radius: 0 25px 0 0;
   .minimize-icon {
     color: white;
     margin: 0 10px 0 auto;
@@ -99,7 +101,7 @@ mat-sidenav-content {
   height: 48px;
   padding: 10px;
   background: #2d323e ;
-
+  border-radius: 0 0 25px 0;
   .powered-by-image {
     //background: url(../../../../assets/sidenav/images/logos/powered_by-light.svg) no-repeat;
     height: 28px;
