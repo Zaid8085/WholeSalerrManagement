@@ -5,6 +5,9 @@ import { SpiColumnType } from 'src/app/shared/components/spi-tables/spi-table/sp
 import * as _ from 'lodash'
 import { SpiTableSettings } from 'src/app/shared/components/spi-tables/Spi-table/Spi-table-settings.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { CommonDialogComponent } from 'src/app/shared/components/common-dialog/common-dialog.component';
+import { DialogProperty, elementsConfig } from 'src/app/shared/components/common-dialog/Model/dialog-poperty';
 @Component({
   selector: 'app-employee-details',
   templateUrl: './employee-details.component.html',
@@ -12,6 +15,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class EmployeeDetailsComponent implements OnInit {
   displayedColumns = [
+    new SpiTableColumn('Delete', 'delete', SpiColumnType.Icon),
     new SpiTableColumn('Employee Id', 'Employee_Id', SpiColumnType.Number),
     new SpiTableColumn('Employee name', 'Employee_name'),
     new SpiTableColumn('Employee role', 'Employee_role'),
@@ -26,21 +30,27 @@ export class EmployeeDetailsComponent implements OnInit {
   tableData = [];
   spiTableSettings: any;
   employeeDetails: any[];
-  constructor(private spiTableService: SpiTableService, public afAuth: AngularFirestore) { }
+  constructor(private matDialog: MatDialog,private spiTableService: SpiTableService, private angularFirestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.getDetailsOfEmployee();
   }
-    getDetailsOfEmployee() {
-    this.afAuth.collection('Employee_Details').snapshotChanges().subscribe(data => {
+  detectChanges(event) {
+    this.tableData = _.cloneDeep(event.tableData ? event.tableData : event);
+  }
+
+  getDetailsOfEmployee() {
+    this.angularFirestore.collection('Employee_Details').snapshotChanges().subscribe(data => {
      console.log(data)
-     data.map(e => {
-         this.tableData.push(e.payload.doc.data());
+     this.tableData = [];
+     data.forEach(e => {
+       const obj = e.payload.doc.data();
+       obj['delete'] = 'delete';
+       obj['docId'] = e.payload.doc.id;
+         this.tableData.push(obj);
      })
      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'employee_details', false);
-   })
-
-   // this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'employee-details', true);      
+   })    
  }
 
  checkboxchecked(checked: any) {
@@ -48,10 +58,6 @@ export class EmployeeDetailsComponent implements OnInit {
  }
 
  // This function is mandatory for every table
- detectChanges(event) {
-   this.tableData = _.cloneDeep(event.tableData ? event.tableData : event);
- }
-
  expandAll() {
    for (let i = 0; document.querySelectorAll('#childrow').length; i++){
      setTimeout(() => {
@@ -60,6 +66,18 @@ export class EmployeeDetailsComponent implements OnInit {
      
    }
  }
+ deleteExpense(docId: any) {
+  const msg = 'Are you sure you want to delete'
+  let dialogProperty = new DialogProperty(new elementsConfig(true, msg), new elementsConfig(true, 'Yes'), new elementsConfig(true, 'No'))
+  let dialogRef = this.matDialog.open(CommonDialogComponent, {
+    data: dialogProperty
+  })
+  dialogRef.afterClosed().subscribe( result => {
+    if(result) {
+     this.angularFirestore.collection('Employee_Details').doc(docId).delete();
+    }
+  }) 
+}
 
  resizeTable() {
    const id = 'employee_details';

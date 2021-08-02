@@ -3,10 +3,11 @@ import { SpiTableColumn } from 'src/app/shared/components/spi-tables/spi-table-c
 import { SpiTableService } from 'src/app/shared/components/spi-tables/spi-table.service';
 import { SpiColumnType } from 'src/app/shared/components/spi-tables/spi-table/spi-column-type.model';
 import * as _ from 'lodash'
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { SpiTableSettings } from 'src/app/shared/components/spi-tables/Spi-table/Spi-table-settings.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { CommonDialogComponent } from 'src/app/shared/components/common-dialog/common-dialog.component';
+import { DialogProperty, elementsConfig } from 'src/app/shared/components/common-dialog/Model/dialog-poperty';
 @Component({
   selector: 'app-distributor-details',
   templateUrl: './distributor-details.component.html',
@@ -14,6 +15,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class DistributorDetailsComponent implements OnInit {
   displayedColumns = [
+    new SpiTableColumn('Delete', 'delete', SpiColumnType.Icon),
     new SpiTableColumn('Distributor Id', 'Distributor_Id', SpiColumnType.Number),
     new SpiTableColumn('Distributor name', 'Distributor_name'),
     new SpiTableColumn('address', 'address'),
@@ -31,14 +33,18 @@ export class DistributorDetailsComponent implements OnInit {
   ];
   tableData = [];
   spiTableSettings: any;
-  productDetails: any[];
-  constructor(private spiTableService: SpiTableService,private matDialog: MatDialog, private angularFirestore: AngularFirestore, private snackbar: MatSnackBar) { }
+  distributorDetails: any[];
+  constructor(private matDialog: MatDialog,private spiTableService: SpiTableService, private angularFirestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.getDetailsOfDistributor();
   }
+  detectChanges(event) {
+    this.tableData = _.cloneDeep(event.tableData ? event.tableData : event);
+  }
+
   getDetailsOfDistributor() {
-    this.angularFirestore.collection('productDetails').snapshotChanges().subscribe(data => {
+    this.angularFirestore.collection('Distributor_Details').snapshotChanges().subscribe(data => {
      console.log(data)
      this.tableData = [];
      data.forEach(e => {
@@ -50,19 +56,12 @@ export class DistributorDetailsComponent implements OnInit {
      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'distributor-details', false);
    })    
  }
- deleteExpense(docId: any) {
-  const msg = 'Are you sure you want to delete this expense? Click Yes to delete and No to cancel'
-}
 
  checkboxchecked(checked: any) {
    alert(checked);
  }
 
  // This function is mandatory for every table
- detectChanges(event) {
-   this.tableData = _.cloneDeep(event.tableData ? event.tableData : event);
- }
-
  expandAll() {
    for (let i = 0; document.querySelectorAll('#childrow').length; i++){
      setTimeout(() => {
@@ -71,9 +70,21 @@ export class DistributorDetailsComponent implements OnInit {
      
    }
  }
+ deleteExpense(docId: any) {
+  const msg = 'Are you sure you want to delete'
+  let dialogProperty = new DialogProperty(new elementsConfig(true, msg), new elementsConfig(true, 'Yes'), new elementsConfig(true, 'No'))
+  let dialogRef = this.matDialog.open(CommonDialogComponent, {
+    data: dialogProperty
+  })
+  dialogRef.afterClosed().subscribe( result => {
+    if(result) {
+     this.angularFirestore.collection('Distributor_Details').doc(docId).delete();
+    }
+  }) 
+}
 
  resizeTable() {
-   const id = 'distributor-details';
+   const id = 'distributor_details';
    this.spiTableService._resizeTable(id);
  }
 

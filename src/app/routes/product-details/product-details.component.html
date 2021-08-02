@@ -1,21 +1,29 @@
-<!-- <spi-spinner [spiTableSettings]="spiTableSettings"></spi-spinner> -->
-<div id="product-details-container" *ngIf="spiTableSettings !== undefined">
-  <table spi-table id="product-details" [spiTableSettings]="spiTableSettings">
-    <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">
-      <tr>
-        <th *ngFor="let column of displayedColumns" spi-cell>{{column.display}}</th>
-      </tr>
-    </thead>
-    <tbody spi-body>
-      <ng-container *ngFor="let data of tableData; let i = index;">
-        <tr spi-row [spiTableSettings]="spiTableSettings" *ngIf="i < spiTableSettings.pagination.numberPerPage">
-          <ng-container *ngFor="let column of displayedColumns">
-            <td spi-cell class="w-40">
-              {{data[column.bind]}}
-            </td>
+<mat-card class="mat-elevation-z5"> 
+  <label>Product Details</label>
+  <div id="product-details-container" *ngIf="spiTableSettings !== undefined">
+      <table spi-table id="product-details" [spiTableSettings]="spiTableSettings">
+        <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">
+          <tr>
+              <ng-container *ngFor="let column of displayedColumns">
+                  <th *ngIf="column.bind !== 'delete'"  spi-cell>{{column.display}}</th>
+                  <th *ngIf="column.bind === 'delete'" class="delete-header" spi-cell>{{column.display}}</th>
+              </ng-container>      
+          </tr>
+        </thead>
+        <tbody spi-body>
+          <ng-container *ngFor="let data of tableData; let i = index;">
+            <tr spi-row [spiTableSettings]="spiTableSettings" *ngIf="i < spiTableSettings.pagination.numberPerPage">
+              <ng-container *ngFor="let column of displayedColumns">
+                <td spi-cell class="w-40" *ngIf="column.bind !== 'delete'">
+                  {{data[column.bind]}}
+                </td>
+                <td spi-cell class="w-10" *ngIf="column.bind === 'delete'">
+                  <mat-icon class="delete-icon" (click)="deleteExpense(data.docId)"> {{data[column.bind]}}</mat-icon>
+                </td> 
+              </ng-container>
+            </tr>
           </ng-container>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
-</div>
+        </tbody>
+      </table>
+    </div>
+</mat-card>

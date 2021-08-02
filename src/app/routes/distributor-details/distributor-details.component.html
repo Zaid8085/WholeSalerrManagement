@@ -1,27 +1,29 @@
-<!-- <spi-spinner [spiTableSettings]="spiTableSettings"></spi-spinner> -->
-<div id="distributor-details-container" *ngIf="spiTableSettings !== undefined">
-    <table spi-table id="distributor-details" [spiTableSettings]="spiTableSettings">
-      <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">
-        <tr>
-          <ng-container *ngFor="let column of displayedColumns">
-            <th *ngIf="column.bind !== 'delete'"  spi-cell>{{column.display}}</th>
-            <th *ngIf="column.bind === 'delete'" class="delete-header" spi-cell>{{column.display}}</th>
-        </ng-container>
-        </tr>
-      </thead>
-      <tbody spi-body>
-        <ng-container *ngFor="let data of tableData; let i = index;">
-          <tr spi-row [spiTableSettings]="spiTableSettings" *ngIf="i < spiTableSettings.pagination.numberPerPage">
-            <ng-container *ngFor="let column of displayedColumns">
-              <td spi-cell class="w-40" *ngIf="column.bind !== 'delete'">
-                {{data[column.bind]}}
-              </td>
-              <td spi-cell class="w-10" *ngIf="column.bind === 'delete'">
-                <mat-icon class="delete-icon" (click)="deleteExpense(data.docId)"> {{data[column.bind]}}</mat-icon>
-              </td> 
-            </ng-container>
+<mat-card class="mat-elevation-z5"> 
+  <label>Distributor Details</label>
+  <div id="distributor-details-container" *ngIf="spiTableSettings !== undefined">
+      <table spi-table id="distributor-details" [spiTableSettings]="spiTableSettings">
+        <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">
+          <tr>
+              <ng-container *ngFor="let column of displayedColumns">
+                  <th *ngIf="column.bind !== 'delete'"  spi-cell>{{column.display}}</th>
+                  <th *ngIf="column.bind === 'delete'" class="delete-header" spi-cell>{{column.display}}</th>
+              </ng-container>      
           </tr>
-        </ng-container>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody spi-body>
+          <ng-container *ngFor="let data of tableData; let i = index;">
+            <tr spi-row [spiTableSettings]="spiTableSettings" *ngIf="i < spiTableSettings.pagination.numberPerPage">
+              <ng-container *ngFor="let column of displayedColumns">
+                <td spi-cell class="w-40" *ngIf="column.bind !== 'delete'">
+                  {{data[column.bind]}}
+                </td>
+                <td spi-cell class="w-10" *ngIf="column.bind === 'delete'">
+                  <mat-icon class="delete-icon" (click)="deleteExpense(data.docId)"> {{data[column.bind]}}</mat-icon>
+                </td> 
+              </ng-container>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+</mat-card>

@@ -5,6 +5,9 @@ import { SpiColumnType } from 'src/app/shared/components/spi-tables/spi-table/sp
 import * as _ from 'lodash'
 import { SpiTableSettings } from 'src/app/shared/components/spi-tables/Spi-table/Spi-table-settings.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { CommonDialogComponent } from 'src/app/shared/components/common-dialog/common-dialog.component';
+import { DialogProperty, elementsConfig } from 'src/app/shared/components/common-dialog/Model/dialog-poperty';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -12,26 +15,27 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class ProductDetailsComponent implements OnInit {
   displayedColumns = [
+    new SpiTableColumn('Delete', 'delete', SpiColumnType.Icon),
     new SpiTableColumn('POSITION', 'Select_Category', SpiColumnType.Number),
     new SpiTableColumn('NAME', 'Select_Sub_Category'),
-    new SpiTableColumn('WEIGHT', 'Product_name', SpiColumnType.Number),
-    new SpiTableColumn('SYMBOL', 'Product_code'),  
-    new SpiTableColumn('SYMBOL', 'Brand'),  
-    new SpiTableColumn('SYMBOL', 'SKUS'),  
-    new SpiTableColumn('SYMBOL', 'Selling_price'),  
-    new SpiTableColumn('SYMBOL', 'Cost_price'),  
-    new SpiTableColumn('SYMBOL', 'Profit'),  
-    new SpiTableColumn('SYMBOL', 'Loss'),  
-    new SpiTableColumn('SYMBOL', 'GST'),  
-    new SpiTableColumn('SYMBOL', 'Total'),  
-    new SpiTableColumn('SYMBOL', 'Quantity'),  
-    new SpiTableColumn('SYMBOL', 'MRP'),  
-    new SpiTableColumn('SYMBOL', 'Expiry_date'),  
+    new SpiTableColumn('PRODUCT NAME', 'Product_name', SpiColumnType.Number),
+    new SpiTableColumn('PRODUCT CODE', 'Product_code'),  
+    new SpiTableColumn('BRAND', 'Brand'),  
+    new SpiTableColumn('SKUS', 'SKUS'),  
+    new SpiTableColumn('SELLING PRICE', 'Selling_price'),  
+    new SpiTableColumn('COST PRICE', 'Cost_price'),  
+    new SpiTableColumn('PROFIT', 'Profit'),  
+    new SpiTableColumn('LOSS', 'Loss'),  
+    new SpiTableColumn('GST', 'GST'),  
+    new SpiTableColumn('TOTAL', 'Total'),  
+    new SpiTableColumn('QUANTITY', 'Quantity'),  
+    new SpiTableColumn('MRP', 'MRP'),  
+    new SpiTableColumn('EXPIRY DATE', 'Expiry_date'),  
   ];
   tableData = [];
   spiTableSettings: any;
   productDetails: any[];
-  constructor(private spiTableService: SpiTableService, public afAuth: AngularFirestore) { }
+  constructor(private matDialog: MatDialog,private spiTableService: SpiTableService, private angularFirestore: AngularFirestore) { }
 
   ngOnInit() {    
     // this.spiTableService.setComponent(DemoChildComponent, 'spi-table-' + this.test);    
@@ -40,26 +44,30 @@ export class ProductDetailsComponent implements OnInit {
     
   }
 
-   getListOfProducts() {
-     this.afAuth.collection('Product_List').snapshotChanges().subscribe(data => {
-      console.log(data)
-      data.map(e => {
-          this.tableData.push(e.payload.doc.data());
-      })
-      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'product-details', false);
-    })
-
-    // this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'product-details', true);      
+  detectChanges(event) {
+    this.tableData = _.cloneDeep(event.tableData ? event.tableData : event);
   }
+
+  getListOfProducts() {
+    this.angularFirestore.collection('Product_List').snapshotChanges().subscribe(data => {
+     console.log(data)
+     this.tableData = [];
+     data.forEach(e => {
+       const obj = e.payload.doc.data();
+       obj['delete'] = 'delete';
+       obj['docId'] = e.payload.doc.id;
+         this.tableData.push(obj);
+     })
+     this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'product-details', false);
+   })    
+ }
 
   checkboxchecked(checked: any) {
     alert(checked);
   }
 
   // This function is mandatory for every table
-  detectChanges(event) {
-    this.tableData = _.cloneDeep(event.tableData ? event.tableData : event);
-  }
+
 
   expandAll() {
     for (let i = 0; document.querySelectorAll('#childrow').length; i++){
@@ -68,6 +76,18 @@ export class ProductDetailsComponent implements OnInit {
       }, 1000);
       
     }
+  }
+  deleteExpense(docId: any) {
+    const msg = 'Are you sure you want to delete this expense? Click Yes to delete and No to cancel'
+    let dialogProperty = new DialogProperty(new elementsConfig(true, msg), new elementsConfig(true, 'Yes'), new elementsConfig(true, 'No'))
+    let dialogRef = this.matDialog.open(CommonDialogComponent, {
+      data: dialogProperty
+    })
+    dialogRef.afterClosed().subscribe( result => {
+      if(result) {
+       this.angularFirestore.collection('Product_List').doc(docId).delete();
+      }
+    }) 
   }
 
   resizeTable() {
