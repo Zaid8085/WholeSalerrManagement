@@ -1,5 +1,4 @@
 <mat-card class="mat-elevation-z5"> 
-  <label>Product Details</label>
   <div id="product-details-container" *ngIf="spiTableSettings !== undefined">
       <table spi-table id="product-details" [spiTableSettings]="spiTableSettings">
         <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">

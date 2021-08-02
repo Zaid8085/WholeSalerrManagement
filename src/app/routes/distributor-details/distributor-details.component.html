@@ -1,5 +1,4 @@
-<mat-card class="mat-elevation-z5"> 
-  <label>Distributor Details</label>
+<mat-card class="mat-elevation-z5">
   <div id="distributor-details-container" *ngIf="spiTableSettings !== undefined">
       <table spi-table id="distributor-details" [spiTableSettings]="spiTableSettings">
         <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">
@@ -18,7 +17,7 @@
                   {{data[column.bind]}}
                 </td>
                 <td spi-cell class="w-10" *ngIf="column.bind === 'delete'">
-                  <mat-icon class="delete-icon" (click)="deleteExpense(data.docId)"> {{data[column.bind]}}</mat-icon>
+                  <mat-icon class="delete-icon material-icons" (click)="deleteExpense(data.docId)">{{data[column.bind]}}</mat-icon>
                 </td> 
               </ng-container>
             </tr>
