@@ -51,7 +51,9 @@ export class DistributorDetailsComponent implements OnInit {
        const obj = e.payload.doc.data();
        obj['delete'] = 'delete';
        obj['docId'] = e.payload.doc.id;
+       
          this.tableData.push(obj);
+         console.log(this.tableData)
      })
      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'distributor-details', false);
    })    

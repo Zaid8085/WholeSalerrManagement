@@ -52,13 +52,17 @@ export class ProductDetailsComponent implements OnInit {
     this.angularFirestore.collection('Product_List').snapshotChanges().subscribe(data => {
      console.log(data)
      this.tableData = [];
+     this.spiTableSettings = undefined;
      data.forEach(e => {
        const obj = e.payload.doc.data();
        obj['delete'] = 'delete';
        obj['docId'] = e.payload.doc.id;
          this.tableData.push(obj);
      })
-     this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'product-details', false);
+     setTimeout(() => {
+      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'product-details', false);
+     }, 10);
+     
    })    
  }
 

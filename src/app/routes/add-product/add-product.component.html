@@ -4,7 +4,7 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Select Catergory</mat-label>
-          <mat-select formControlName="Select_Category" (ngModelChange)="onCategorySelection($event)">
+          <mat-select formControlName="Select_Category" (ngModelChange)="onCategorySelection($event)" required>
             <mat-option *ngFor="let category of categories" [value]="category.value.Category_ID">{{category.value.Category_Name}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -12,7 +12,7 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Select Catergory</mat-label>
-          <mat-select formControlName="Select_Sub_Category" (ngModelChange)="onSubCategorySelection($event)">
+          <mat-select formControlName="Select_Sub_Category" (ngModelChange)="onSubCategorySelection($event)" required>
             <mat-option *ngFor="let category of selectedSubCategory" [value]="category.Sub_Category_ID">{{category.Sub_Category_Name}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -22,7 +22,7 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Product Name</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="Product_name">
+          <input matInput placeholder="Placeholder" formControlName="Product_name" required>
           <mat-icon matSuffix>store</mat-icon>
         </mat-form-field>
       </div>
@@ -111,14 +111,14 @@
         <mat-form-field appearance="legacy">
           <mat-label>Profit (%)</mat-label>
           <input matInput placeholder="Placeholder" formControlName="Profit">
-          <mat-icon matSuffix>emoji_symbols</mat-icon>
+          <mat-icon matSuffix [ngClass]="{'profit': isProfit}">{{ isProfit ? 'trending_up' : 'sentiment_dissatisfied'}}</mat-icon>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Loss (%)</mat-label>
           <input matInput placeholder="Placeholder" formControlName="Loss">
-          <mat-icon matSuffix>emoji_symbols</mat-icon>
+          <mat-icon matSuffix [ngClass]="{'loss': isLoss}">{{ isLoss ? 'trending_down' : 'sentiment_satisfied'}}</mat-icon>
         </mat-form-field>
       </div>
       
@@ -128,7 +128,7 @@
         <mat-form-field appearance="legacy">
           <mat-label>Total Profit</mat-label>
           <input matInput placeholder="Placeholder" formControlName="Total"  type="number" >
-          <mat-icon matSuffix>calculate</mat-icon>
+          <mat-icon matSuffix [ngClass]="isProfit ? 'profit' : ( isLoss ? 'loss' : '' )">{{ isProfit ? 'trending_up' : ( isLoss ? 'trending_down' : 'sentiment_satisfied')}}</mat-icon>
         </mat-form-field>
       </div>
       <div>

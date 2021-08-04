@@ -60,6 +60,8 @@ export class AddProductComponent implements OnInit {
   selectedDocId: any;
   mesuaringUnits: any[] = [];
   isLoading: boolean;
+  isProfit = false;
+  isLoss = false;
   constructor(private fb: FormBuilder, public afAuth: AngularFirestore, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -100,6 +102,16 @@ export class AddProductComponent implements OnInit {
     }
     this.addform.controls['Selling_price'].setValue(profitSP * this.addform.controls['Quantity'].value);
     this.addform.controls['Total'].setValue((profitSP - sellingPrice) * this.addform.controls['Quantity'].value);
+
+    if (this.addform.controls['Profit'].value > 0) {
+      this.isProfit = true;
+      this.isLoss = false;
+    } 
+     if (this.addform.controls['Loss'].value > 0) {
+      this.isProfit = false;
+      this.isLoss = true;
+     }
+
   }
   getMesuaringUnits() {
     this.afAuth.collection('Measuring_Units').snapshotChanges().subscribe(data => {
