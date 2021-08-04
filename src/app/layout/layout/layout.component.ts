@@ -49,6 +49,10 @@ export class LayoutComponent implements OnInit {
       {
         icon: 'attach_money', label: 'Income', route: './income', url: '', title: 'Income', disabled: false, isOpen: false, expandPriority: false,
 
+      },
+      {
+        icon: 'spa', label: 'Saloon', route: './income', url: '', title: 'Saloon', disabled: false, isOpen: false, expandPriority: false,
+
       }
     ]
     this.boltSidenavService.emitMenuOptions.next(this.navigationOptions)

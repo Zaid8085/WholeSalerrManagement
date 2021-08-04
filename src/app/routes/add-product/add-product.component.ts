@@ -6,7 +6,7 @@ import firebase from 'firebase/app';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificationComponent } from 'src/app/shared/components/notification/notification.component';
 import { style } from '@angular/animations';
-
+import { SpiColumnType } from 'src/app/shared/components/spi-tables/spi-table/spi-column-type.model';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -48,7 +48,7 @@ export class AddProductComponent implements OnInit {
     Cost_price: [{ value: null, disabled: true }, Validators.required],
     Profit: [{ value: 10, disabled: true }, Validators.required],
     Loss: [{ value: 0 , disabled: true }, Validators.required],
-    Discount: [{ value: 0, disabled: true }, Validators.required],
+    Discount: [{ value: 0 , disabled: true }, Validators.required],
     GST: [{ value: null, disabled: true }, Validators.required],
     Total: [{ value: '', disabled: true }, Validators.required],
     Quantity: [{ value: 1, disabled: true }, Validators.required],
@@ -57,11 +57,9 @@ export class AddProductComponent implements OnInit {
   policies: any[];
   categories: any[];
   selectedSubCategory: any[] = [];
-  selectedDocId: any;
+  selectedDocId: any; 
   mesuaringUnits: any[] = [];
   isLoading: boolean;
-  isProfit = false;
-  isLoss = false;
   constructor(private fb: FormBuilder, public afAuth: AngularFirestore, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -93,7 +91,7 @@ export class AddProductComponent implements OnInit {
       profitSP = sellingPrice + sellingPrice * (0.1 - this.addform.controls['Discount'].value / 100);
       if (profitSP < sellingPrice) {
         const loss = sellingPrice * (sellingPrice - profitSP )/ 100;
-        this.addform.controls['Loss'].setValue(loss);
+        this.addform.controls['Loss'].setValue(0)
         this.addform.controls['Profit'].setValue(0)
       } else if (profitSP >= sellingPrice) {
         this.addform.controls['Loss'].setValue(0)
@@ -102,16 +100,6 @@ export class AddProductComponent implements OnInit {
     }
     this.addform.controls['Selling_price'].setValue(profitSP * this.addform.controls['Quantity'].value);
     this.addform.controls['Total'].setValue((profitSP - sellingPrice) * this.addform.controls['Quantity'].value);
-
-    if (this.addform.controls['Profit'].value > 0) {
-      this.isProfit = true;
-      this.isLoss = false;
-    } 
-     if (this.addform.controls['Loss'].value > 0) {
-      this.isProfit = false;
-      this.isLoss = true;
-     }
-
   }
   getMesuaringUnits() {
     this.afAuth.collection('Measuring_Units').snapshotChanges().subscribe(data => {

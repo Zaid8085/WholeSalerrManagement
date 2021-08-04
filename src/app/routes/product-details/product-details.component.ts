@@ -16,9 +16,9 @@ import { DialogProperty, elementsConfig } from 'src/app/shared/components/common
 export class ProductDetailsComponent implements OnInit {
   displayedColumns = [
     new SpiTableColumn('Delete', 'delete', SpiColumnType.Icon),
-    new SpiTableColumn('POSITION', 'Select_Category', SpiColumnType.Number),
-    new SpiTableColumn('NAME', 'Select_Sub_Category'),
-    new SpiTableColumn('PRODUCT NAME', 'Product_name', SpiColumnType.Number),
+    new SpiTableColumn('Position', 'Select_Category', SpiColumnType.Number),
+    new SpiTableColumn('Name', 'Select_Sub_Category'),
+    new SpiTableColumn('Product NAME', 'Product_name', SpiColumnType.Number),
     new SpiTableColumn('PRODUCT CODE', 'Product_code'),  
     new SpiTableColumn('BRAND', 'Brand'),  
     new SpiTableColumn('SKUS', 'SKUS'),  
@@ -41,7 +41,7 @@ export class ProductDetailsComponent implements OnInit {
     // this.spiTableService.setComponent(DemoChildComponent, 'spi-table-' + this.test);    
     
     this.getListOfProducts();
-    
+    this.tableData.length
   }
 
   detectChanges(event) {
