@@ -16,6 +16,7 @@ import { DialogProperty, elementsConfig } from 'src/app/shared/components/common
 export class EmployeeDetailsComponent implements OnInit {
   displayedColumns = [
     new SpiTableColumn('Delete', 'delete', SpiColumnType.Icon),
+    new SpiTableColumn('Employee Picture', 'picture'),
     new SpiTableColumn('Employee Id', 'Employee_Id', SpiColumnType.Number),
     new SpiTableColumn('Employee name', 'Employee_name'),
     new SpiTableColumn('Employee role', 'Employee_role'),
@@ -41,7 +42,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
   getDetailsOfEmployee() {
     this.angularFirestore.collection('Employee_Details').snapshotChanges().subscribe(data => {
-     console.log(data)
+
      this.tableData = [];
      data.forEach(e => {
        const obj = e.payload.doc.data();
@@ -49,6 +50,7 @@ export class EmployeeDetailsComponent implements OnInit {
        obj['docId'] = e.payload.doc.id;
          this.tableData.push(obj);
      })
+      console.log(this.tableData)
      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'employee_details', false);
    })    
  }
@@ -75,6 +77,7 @@ export class EmployeeDetailsComponent implements OnInit {
   dialogRef.afterClosed().subscribe( result => {
     if(result) {
      this.angularFirestore.collection('Employee_Details').doc(docId).delete();
+      this.resizeTable()
     }
   }) 
 }

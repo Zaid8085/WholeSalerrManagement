@@ -17,7 +17,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpiTablesModule } from "./shared/components/spi-tables/spi-tables.module";
 import { CommonDialogComponent } from './shared/components/common-dialog/common-dialog.component';
-
+import { AngularFireStorageModule } from "@angular/fire/storage";
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,8 @@ import { CommonDialogComponent } from './shared/components/common-dialog/common-
     AngularFirestoreModule, 
     AngularFireAuthModule,
     ReactiveFormsModule,
-    SpiTablesModule
+    SpiTablesModule,
+    AngularFireStorageModule,
   ],
   exports: [
     SpiTablesModule,
@@ -44,7 +45,7 @@ import { CommonDialogComponent } from './shared/components/common-dialog/common-
     CommonDialogComponent
   ],
   providers: [
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000} }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000 } },
   ],
   bootstrap: [AppComponent],
 })

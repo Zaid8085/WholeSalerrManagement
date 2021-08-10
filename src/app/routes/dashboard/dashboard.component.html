@@ -1,1 +1,104 @@
-<p>dashboard works!</p>
+<div class="container">
+    <!-- <mat-card>
+        <label>Enter Expenses</label>
+    </mat-card> -->
+    <div class="top-row">
+        <div class="card">
+            <label>Overall Purchase <mat-icon>credit_card</mat-icon></label>
+            <div>
+                <span class="label">Today : </span>
+                <span class="amount">10000.00 ₹</span>
+            </div>
+            <div>
+                <span class="label">Monthly : </span>
+                <span class="amount">100000.00 ₹</span>
+            </div>
+            <div>
+                <span class="label">Yearly : </span>
+                <span class="amount">100000.00 ₹</span>
+            </div>
+        </div>
+        <div class="card">
+            <label>Total Expenses <mat-icon>card_travel</mat-icon></label>
+            <div>
+                <span class="label">Today : </span>
+                <span class="amount">10000.00 ₹</span>
+            </div>
+            <div>
+                <span class="label">Monthly : </span>
+                <span class="amount">100000.00 ₹</span>
+            </div>
+            <div>
+                <span class="label">Yearly : </span>
+                <span class="amount">100000.00 ₹</span>
+            </div>
+        </div>
+        <div class="card">
+            <label>Total Profit <mat-icon>trending_up</mat-icon></label>
+            <div>
+                <span class="label">Today : </span>
+                <span class="amount">10000.00 ₹</span>
+            </div>
+            <div>
+                <span class="label">Monthly : </span>
+                <span class="amount">100000.00 ₹</span>
+            </div>
+            <div>
+                <span class="label">Yearly : </span>
+                <span class="amount">100000.00 ₹</span>
+            </div>
+        </div>
+        <div class="card">
+            <label>Total Sell <mat-icon>paid</mat-icon></label>
+            <div>
+                <span class="label">Today : </span>
+                <span class="amount">10000.00 ₹</span>
+            </div>
+            <div>
+                <span class="label">Monthly : </span>
+                <span class="amount">100000.00 ₹</span>
+            </div>
+            <div>
+                <span class="label">Yearly : </span>
+                <span class="amount">100000.00 ₹</span>
+            </div>
+        </div>
+    </div>
+    <div class="second-row">
+
+        <div class="card">
+            <div class="card-header">
+                <label>Employees Score <mat-icon>check_circle</mat-icon></label>
+            </div>
+            <div class="btm-card">
+                <div class="card inner-card" *ngFor="let data of tableData">
+                    <div *ngIf="data.picture; else default">
+                        <img [src]="data.picture" alt="" style="width:100px; height:100px; border-radius: 100px;">
+                    </div>
+                    <ng-template #default>
+                        <div>
+                            <img src="https://firebasestorage.googleapis.com/v0/b/wholesalerr-be.appspot.com/o/wholesalerrManagement%2FprofilePictures%2Fdefault-user.png?alt=media&token=eeda6840-7e28-4cfc-84ca-361e9eba7e54"
+                                alt="" style="width:100px; height:100px; border-radius: 100px;">
+                        </div>
+                    </ng-template>
+
+                    <label> {{data.Employee_name}}</label>
+                    <div>
+                        <span class="label">Today : </span>
+                        <span class="amount">10000.00 ₹</span>
+                    </div>
+                    <div>
+                        <span class="label">Monthly : </span>
+                        <span class="amount">100000.00 ₹</span>
+                    </div>
+                    <div>
+                        <span class="label">Yearly : </span>
+                        <span class="amount">100000.00 ₹</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

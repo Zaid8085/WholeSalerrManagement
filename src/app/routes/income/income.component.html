@@ -7,7 +7,7 @@
                     <mat-form-field appearance="legacy">
                         <mat-label>Expense Type</mat-label>
                         <mat-select formControlName="expenseType">
-                          <mat-option *ngFor="let expense of expenseTypes" [value]="expense.value.Expense_Name">{{expense.value.Expense_Name}}</mat-option>
+                          <mat-option *ngFor="let expense of expenseTypes" [value]="expense.value.Service_ID">{{expense.value.Service_Name}}</mat-option>
                         </mat-select>
                       </mat-form-field>
                   </div>

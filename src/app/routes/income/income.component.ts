@@ -17,11 +17,11 @@ import { DialogProperty, elementsConfig } from 'src/app/shared/components/common
   styleUrls: ['./income.component.scss']
 })
 export class IncomeComponent implements OnInit {
-
+  date = new Date().getDay().toString() + '/' + new Date().getMonth().toString() + '/' + new Date().getFullYear().toString();
   expenseForm: FormGroup = this.fb.group({
     expenseType: ['', Validators.required,],
     amount: ['', Validators.required,],
-    date: ['', Validators.required],
+    date: [Date.parse(this.date), Validators.required],
   });
   expenseTypes: any[] = [];
   isLoading: boolean;
@@ -30,7 +30,7 @@ export class IncomeComponent implements OnInit {
     new SpiTableColumn('Delete', 'delete', SpiColumnType.Icon),
     new SpiTableColumn('Expense Type', 'expenseType', SpiColumnType.String),
     new SpiTableColumn('Amount', 'amount', SpiColumnType.Number),
-    new SpiTableColumn('Date', 'date', SpiColumnType.Date),
+    new SpiTableColumn('Date', 'date', SpiColumnType.String),
   ];
 
   tableData = [];
@@ -39,6 +39,7 @@ export class IncomeComponent implements OnInit {
   constructor(private matDialog: MatDialog ,private fb: FormBuilder, private angularFirestore: AngularFirestore, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
+    console.log(this.date)
     this.getExpenseTypes();
     this.getListOfProducts();
   }

@@ -50,7 +50,7 @@ export class ProductDetailsComponent implements OnInit {
 
   getListOfProducts() {
     this.angularFirestore.collection('Product_List').snapshotChanges().subscribe(data => {
-     console.log(data)
+     console.log(data.length)
      this.tableData = [];
      this.spiTableSettings = undefined;
      data.forEach(e => {

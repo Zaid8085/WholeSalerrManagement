@@ -13,7 +13,12 @@ const routes = [
   {
     path: '', component: LayoutComponent, children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'dashboard', loadChildren: () =>
+          import('../../routes/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
       {
         path: 'add-product',
         loadChildren: () =>
@@ -67,14 +72,13 @@ const routes = [
   },
 ];
 @NgModule({
-  declarations: [LayoutComponent,LayoutContentComponent],
+  declarations: [LayoutComponent, LayoutContentComponent],
   imports: [
     CommonModule,
-    RouterModule,
     RootMaterialModule,
     BoltSidenavModule,
     RouterModule.forChild(routes),
   ],
 
 })
-export class LayoutModule {}
+export class LayoutModule { }

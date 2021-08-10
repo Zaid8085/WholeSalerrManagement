@@ -78,10 +78,21 @@
                     <mat-icon matSuffix>remember_me</mat-icon>
                   </mat-form-field>
                 </div>
+                
               </div>
               <div class="btn-row">
                 <button mat-raised-button color="basic" (click)="clearInputMethod1()">Clear</button>
                 <button mat-raised-button class="primary">Save</button>
               </div>
+              <div *ngIf="imgFile">
+                <img [src]="imgFile" alt="" style="width:40px; height:25px">
+              </div>
     </mat-card>
 </form>
+<div>
+  <!-- <mat-form-field appearance="legacy"> -->
+  <mat-label>Profile Picture</mat-label>
+  <input type="file" placeholder="Select a picture" (change)="onImageChange($event)">
+  <!-- <mat-icon matSuffix>remember_me</mat-icon> -->
+  <!-- </mat-form-field> -->
+</div>

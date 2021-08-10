@@ -134,7 +134,6 @@ export class AddProductComponent implements OnInit {
         } as any;
       })
     })
-   
   }
 
   onCategorySelection(category: any) {
