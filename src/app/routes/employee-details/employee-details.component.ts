@@ -8,6 +8,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { CommonDialogComponent } from 'src/app/shared/components/common-dialog/common-dialog.component';
 import { DialogProperty, elementsConfig } from 'src/app/shared/components/common-dialog/Model/dialog-poperty';
+import { style } from '@angular/animations';
 @Component({
   selector: 'app-employee-details',
   templateUrl: './employee-details.component.html',
@@ -18,15 +19,15 @@ export class EmployeeDetailsComponent implements OnInit {
     new SpiTableColumn('Delete', 'delete', SpiColumnType.Icon),
     new SpiTableColumn('Employee Picture', 'picture'),
     new SpiTableColumn('Employee Id', 'Employee_Id', SpiColumnType.Number),
-    new SpiTableColumn('Employee name', 'Employee_name'),
-    new SpiTableColumn('Employee role', 'Employee_role'),
+    new SpiTableColumn('Employee Name', 'Employee_name'),
+    new SpiTableColumn('Employee Role', 'Employee_role'),
     new SpiTableColumn('Address', 'Address'),  
     new SpiTableColumn('Email', 'Email'),  
-    new SpiTableColumn('Mobile number', 'Mobile_number'),  
+    new SpiTableColumn('Mobile Number', 'Mobile_number'),  
     new SpiTableColumn('Salary', 'Salary'),  
-    new SpiTableColumn('Joining date', 'Joining_date',SpiColumnType.Date),  
-    new SpiTableColumn('Aadhar card', 'Aadhar_card'),  
-    new SpiTableColumn('Pan card', 'Pan_card'),     
+    new SpiTableColumn('Joining Date', 'Joining_date',SpiColumnType.Date),  
+    new SpiTableColumn('Aadhar Card', 'Aadhar_card'),  
+    new SpiTableColumn('Pan Card', 'Pan_card'),     
   ];
   tableData = [];
   spiTableSettings: any;

@@ -29,7 +29,7 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Product Code</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="Product_code">
+          <input matInput placeholder="Placeholder" formControlName="Product_code" required>
           <mat-icon matSuffix>code</mat-icon>
         </mat-form-field>
       </div>
@@ -38,14 +38,14 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Brand</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="Brand">
+          <input matInput placeholder="Placeholder" formControlName="Brand" required>
           <mat-icon matSuffix>leaderboard</mat-icon>
         </mat-form-field>
       </div>
       <div class="sku">
         <mat-form-field appearance="legacy" class="input">
           <mat-label>SKU (s)</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="SKUS">
+          <input matInput placeholder="Placeholder" formControlName="SKUS" required>
           <!-- <mat-icon matSuffix>description</mat-icon> -->
         </mat-form-field>
         <mat-form-field appearance="outline" class="dropdown">
@@ -60,14 +60,14 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Quantity</mat-label>
-          <input matInput placeholder="Placeholder" type="number" formControlName="Quantity">
+          <input matInput placeholder="Placeholder" type="number" formControlName="Quantity" required>
           <mat-icon matSuffix>production_quantity_limits</mat-icon>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>MRP</mat-label>
-          <input matInput placeholder="Placeholder" type="number" formControlName="MRP">
+          <input matInput placeholder="Placeholder" type="number" formControlName="MRP" required>
           <mat-icon matSuffix>paid</mat-icon>
         </mat-form-field>
       </div>
@@ -76,7 +76,7 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Cost Price</mat-label>
-          <input matInput placeholder="Placeholder"  type="number" formControlName="Cost_price">
+          <input matInput placeholder="Placeholder"  type="number" formControlName="Cost_price" required>
           <mat-icon matSuffix>paid</mat-icon>
         </mat-form-field>
       </div>
@@ -94,14 +94,14 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Discount (%)</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="Discount">
+          <input matInput placeholder="Placeholder" formControlName="Discount" required>
           <mat-icon matSuffix>paid</mat-icon>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Selling Price (Including 10% profit)</mat-label>
-          <input matInput placeholder="Placeholder"  type="number" formControlName="Selling_price">
+          <input matInput placeholder="Placeholder"  type="number" formControlName="Selling_price" required>
           <mat-icon matSuffix>paid</mat-icon>
         </mat-form-field>
       </div>    
@@ -110,14 +110,14 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Profit (%)</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="Profit">
+          <input matInput placeholder="Placeholder" formControlName="Profit" required>
           <mat-icon matSuffix [ngClass]="{'profit': isProfit}">{{ isProfit ? 'trending_up' : 'sentiment_dissatisfied'}}</mat-icon>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Loss (%)</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="Loss">
+          <input matInput placeholder="Placeholder" formControlName="Loss" required>
           <mat-icon matSuffix [ngClass]="{'loss': isLoss}">{{ isLoss ? 'trending_down' : 'sentiment_satisfied'}}</mat-icon>
         </mat-form-field>
       </div>
@@ -127,14 +127,14 @@
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Total Profit</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="Total"  type="number" >
-          <mat-icon matSuffix [ngClass]="isProfit ? 'profit' : ( isLoss ? 'loss' : '' )">{{ isProfit ? 'trending_up' : ( isLoss ? 'trending_down' : 'sentiment_satisfied')}}</mat-icon>
+          <input matInput placeholder="Placeholder" formControlName="Total"  type="number" required>
+          <mat-icon matSuffix [ngClass]="isProfit ? 'profit' :  ( isLoss ? 'loss' : '' )">{{ isProfit ? 'trending_up' : ( isLoss ? 'trending_down' : 'sentiment_satisfied')}}</mat-icon>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="legacy">
           <mat-label>Product Expiry Date</mat-label>
-          <input matInput type="date" placeholder="Placeholder" formControlName="Expiry_date">
+          <input matInput type="date" placeholder="Placeholder" formControlName="Expiry_date" required>
           <!-- <mat-icon matSuffix>event_busy</mat-icon> -->
         </mat-form-field>
       </div>
