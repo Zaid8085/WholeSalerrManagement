@@ -1,16 +1,33 @@
 <div class="container">
-    <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()" >
+    <form [formGroup]="saloonForm" (ngSubmit)="onSubmit()" >
         <mat-card class="mat-elevation-z5"> 
             <label>Enter Expenses</label>
             <div class="parent-div">
                 <div>
                     <mat-form-field appearance="legacy">
-                        <mat-label>Expense Type</mat-label>
-                        <mat-select formControlName="expenseType">
-                          <mat-option *ngFor="let expense of expenseTypes" [value]="expense.value.Expense_ID">{{expense.value.Expense_Name}}</mat-option>
+                        <mat-label>Employee Name</mat-label>
+                        <mat-select formControlName="employeeName">
+                          <mat-option *ngFor="let saloon of expenseTypes" [value]="saloon.value.Service_ID">{{expense.value.Expense_Name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                  <div>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Service Type</mat-label>
+                        <mat-select formControlName="serviceType">
+                          <mat-option *ngFor="let saloon of expenseTypes" [value]="saloon.value.Service_Name">{{expense.value.Expense_Name}}</mat-option>
                         </mat-select>
                       </mat-form-field>
                   </div>
+                  <div>
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Date</mat-label>
+                      <input matInput type="date" placeholder="Placeholder" formControlName="date">
+                      <!-- <mat-icon matSuffix>paid</mat-icon> -->
+                    </mat-form-field>
+                  </div>
+                </div>
+                  <div class="parent-div">
                   <div>
                     <mat-form-field appearance="legacy">
                       <mat-label>Amount</mat-label>
@@ -20,22 +37,22 @@
                   </div>
                   <div>
                     <mat-form-field appearance="legacy">
-                      <mat-label>Date</mat-label>
-                      <input matInput type="date" placeholder="Placeholder" formControlName="date">
-                      <!-- <mat-icon matSuffix>paid</mat-icon> -->
+                      <mat-label>Total Amount</mat-label>
+                      <input matInput type="number" placeholder="Placeholder" formControlName="totalamount">
+                      <mat-icon matSuffix>paid</mat-icon>
                     </mat-form-field>
                   </div>
               </div>
               <div class="btn-row">
-                <button mat-raised-button color="basic" (click)="clear()" [disabled]="expenseForm.untouched">Clear</button>
-                <button mat-raised-button class="primary" [disabled]="!expenseForm.valid">Save</button>
+                <button mat-raised-button color="basic" (click)="clear()" [disabled]="saloonForm.untouched">Clear</button>
+                <button mat-raised-button class="primary" [disabled]="!saloonForm.valid">Save</button>
               </div>
         </mat-card>
     </form>
     <mat-card class="mat-elevation-z5"> 
         <label>Expense Details</label>
-        <div id="expense-details-container" *ngIf="spiTableSettings !== undefined">
-            <table spi-table id="expense-details" [spiTableSettings]="spiTableSettings">
+        <div id="saloon-container" *ngIf="spiTableSettings !== undefined">
+            <table spi-table id="saloon" [spiTableSettings]="spiTableSettings">
               <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">
                 <tr>
                     <ng-container *ngFor="let column of displayedColumns">
@@ -63,6 +80,3 @@
           </div>
     </mat-card>
 </div>
-
-
-

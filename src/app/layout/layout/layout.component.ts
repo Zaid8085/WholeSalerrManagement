@@ -51,7 +51,7 @@ export class LayoutComponent implements OnInit {
 
       },
       {
-        icon: 'spa', label: 'Saloon', route: './income', url: '', title: 'Saloon', disabled: false, isOpen: false, expandPriority: false,
+        icon: 'spa', label: 'Saloon', route: 'saloon', url: '', title: 'Saloon', disabled: false, isOpen: false, expandPriority: false,
 
       }
     ]

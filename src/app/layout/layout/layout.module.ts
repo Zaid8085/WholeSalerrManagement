@@ -68,6 +68,13 @@ const routes = [
             (m) => m.EmployeeDetailsModule
           ),
       },
+      {
+        path: 'saloon',
+        loadChildren: () =>
+          import('../../routes/saloon/saloon.module').then(
+            (m) => m.SaloonModule
+          ),
+      },
     ]
   },
 ];
