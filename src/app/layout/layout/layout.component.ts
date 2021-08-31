@@ -53,6 +53,10 @@ export class LayoutComponent implements OnInit {
       {
         icon: 'spa', label: 'Saloon', route: 'saloon', url: '', title: 'Saloon', disabled: false, isOpen: false, expandPriority: false,
 
+      },
+      {
+        icon: 'child_care', label: 'Student Registration', route: 'student-registration', url: '', title: 'Student Registration', disabled: false, isOpen: false, expandPriority: false,
+
       }
     ]
     this.boltSidenavService.emitMenuOptions.next(this.navigationOptions)

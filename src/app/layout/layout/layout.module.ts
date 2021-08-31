@@ -75,6 +75,13 @@ const routes = [
             (m) => m.SaloonModule
           ),
       },
+      {
+        path: 'student-registration',
+        loadChildren: () =>
+          import('../../routes/student-registration/student-registration.module').then(
+            (m) => m.StudentRegistrationModule
+          ),
+      },
     ]
   },
 ];
