@@ -55,8 +55,11 @@ export class LayoutComponent implements OnInit {
 
       },
       {
-        icon: 'child_care', label: 'Student Registration', route: 'student-registration', url: '', title: 'Student Registration', disabled: false, isOpen: false, expandPriority: false,
-
+        icon: 'emoji_people', label: 'Student Registration', route: './dummy', url: '', title: 'Student Registration', disabled: false, isOpen: false, expandPriority: false,
+        children: [
+          {icon: 'how_to_reg', label: 'Student Registration', route: 'student-registration', url: '', title: 'Student Registration', disabled: false, isOpen: false, expandPriority: false,},
+          {icon: 'groups', label: 'Student Details', route: 'student-details', url: '', title: 'Student Details', disabled: false, isOpen: false, expandPriority: false,}
+        ],
       }
     ]
     this.boltSidenavService.emitMenuOptions.next(this.navigationOptions)

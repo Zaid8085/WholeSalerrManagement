@@ -1,152 +1,199 @@
 <div class="container">
-    <form [formGroup]="studentForm" (ngSubmit)="onSubmit1()">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
         <mat-card class="mat-elevation-z5"> 
             <label>Child Info ("The Participant")</label> 
             <div class="parent-div">
                 <div>
                     <mat-form-field appearance="legacy">
                         <mat-label>Name</mat-label>
-                        <input type="name" placeholder="Student Name" formControlName = "name">
-                        <mat-icon matSuffix>paid</mat-icon> 
+                        <input matInput type="name" placeholder="Student Name" formControlName = "name">
+                        <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon> 
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field appearance="legacy">
                         <mat-label>Address</mat-label>
-                        <input type="text" placeholder="Address Here" formControlName = "address">
-                      </mat-form-field>
-                </div>
-            </div>
-            <div class="parent-div1">
-                <div>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Date of Birth</mat-label>
-                        <input type="date" placeholder="DOB" formControlName = "date">
+                        <input matInput type="text" placeholder="Address Here" formControlName = "address">
+                        <mat-icon matSuffix>home</mat-icon>
                       </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field appearance="legacy">
-                        <mat-label>School/Collages</mat-label>
-                        <input type="text" placeholder="Enter Name Here" formControlName = "school">
+                        <mat-label>Date Of Birth</mat-label>
+                        <input matInput type="date" placeholder="DOB" formControlName = "date">
                     </mat-form-field>
                 </div>
             </div>
-                <div class="parent-div2">
-                <div>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Email id</mat-label>
-                        <input type="email" placeholder="Enter Email Here" formControlName = "email">
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Center Location</mat-label>
-                        <input type="text" placeholder="Enter Location Here" formControlName = "center_location">
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="parent-div3">
-                <div>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Which do you like most?</mat-label>
-                        <input type="radio" placeholder="select" >
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Favorite Crickter</mat-label>
-                        <input type="text" placeholder="Name" formControlName = "favorite">
-                    </mat-form-field>
-                </div>
-            </div>
-              <div class="parent-div3">
-                <div class="one">
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Favorite Cricket Moment</mat-label>
-                        <input type="text" placeholder="Name" formControlName = "favorite_movement">
-                    </mat-form-field>
-                </div>
-            </div>
-             
-                <div class="btn-row">
-                    <button mat-raised-button color="basic" (click)="clearInputMethod1()" [disabled]="studentForm.untouched">Clear</button>
-                    <button mat-raised-button class="primary" [disabled]="!studentForm.valid">Save</button>
-                </div>
-        </mat-card>
-    </form>
-    <div class="container">
-        <form [formGroup]="parentForm" (ngSubmit)="onSubmit2()">
-            <mat-card class="mat-elevation-z5"> 
-                <label>Parent / Guidence Info</label> 
                 <div class="parent-div">
                     <div>
                         <mat-form-field appearance="legacy">
-                            <mat-label>Name</mat-label>
-                            <input type="name" placeholder="Student Name" formControlName = "name">
-                            <mat-icon matSuffix>paid</mat-icon> 
-                          </mat-form-field>
-                    </div>
-                    <div>
-                        <mat-form-field appearance="legacy">
-                            <mat-label>Address</mat-label>
-                            <input type="text" placeholder="Address Here" formControlName = "address">
-                          </mat-form-field>
-                    </div>
-                </div>
-                <div class="parent-div1">
-                    <div>
-                        <mat-form-field appearance="legacy">
-                            <mat-label>Date of Birth</mat-label>
-                            <input type="date" placeholder="DOB" formControlName = "date">
-                          </mat-form-field>
-                    </div>
-                    <div>
-                        <mat-form-field appearance="legacy">
-                            <mat-label>School/Collages</mat-label>
-                            <input type="text" placeholder="Enter Name Here" formControlName = "school">
+                            <mat-label>Email Id</mat-label>
+                            <input matInput type="email" placeholder="Email" formControlName="email">
+                            <mat-icon matSuffix>email</mat-icon>
                         </mat-form-field>
                     </div>
-                </div>
-                    <div class="parent-div2">
                     <div>
                         <mat-form-field appearance="legacy">
-                            <mat-label>Email id</mat-label>
-                            <input type="email" placeholder="Enter Email Here" formControlName = "email">
+                          <mat-label>School/Collage</mat-label>
+                          <input matInput type="text" placeholder="Enter School/Collage Name" formControlName="school">
+                          <mat-icon matSuffix>school</mat-icon>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field appearance="legacy">
                             <mat-label>Center Location</mat-label>
-                            <input type="text" placeholder="Enter Location Here" formControlName = "center_location">
+                            <input matInput type="text" placeholder="Enter Location" formControlName="center_location">
+                            <mat-icon matSuffix>location_city</mat-icon>
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="parent-div3">
+                <div class="parent-div">
                     <div>
-                        <mat-form-field appearance="legacy">
-                            <mat-label>Which do you like most?</mat-label>
-                            <input type="radio" placeholder="select" >
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Which do you like most?</mat-label>
+                        <select matNativeControl required formControlName="select">
+                            <option value=""></option>
+                            <option value="batting">Batting</option>
+                            <option value="bowling">Bowling</option>
+                            <option value="fielding">Fielding</option>
+                            <option value="wicket-keeping">Wicket-Keeping</option>
+                          </select>
+                    </mat-form-field>
+                </div>
+                   <div>
+                       <mat-form-field appearance="legacy">
+                           <mat-label>Name of your favorite cricketer</mat-label>
+                           <input matInput type="text" placeholder="Enter Name Here" formControlName="favorite">
+                           <mat-icon matSuffix>sports_cricket</mat-icon>
+                       </mat-form-field>
+                   </div>
+                   <div>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Explain Favorite Moment</mat-label>
+                        <input matInput type="text" placeholder="Enter Moment Here" formControlName="favorite_movement">
+                        <mat-icon matSuffix>hiking</mat-icon>
+                    </mat-form-field>
+                   </div>
+                </div>
+                <label>Parent Info ("Guidience")</label> 
+                <div class="parent-div">
+                    <div>
+                      <mat-form-field>
+                          <mat-label>Name</mat-label>
+                          <input matInput type="text" placeholder="Enter your Name" formControlName="parent_name">
+                          <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Address</mat-label>
+                            <input matInput type="text" placeholder="Enter your Address" formControlName="parent_address">
+                            <mat-icon matSuffix>home</mat-icon>
                         </mat-form-field>
                     </div>
                     <div>
-                        <mat-form-field appearance="legacy">
-                            <mat-label>Favorite Crickter</mat-label>
-                            <input type="text" placeholder="Name" formControlName = "favorite">
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" placeholder="Email Address" formControlName="parent_email"> 
+                            <mat-icon matSuffix>email</mat-icon>
                         </mat-form-field>
                     </div>
                 </div>
-                  <div class="parent-div3">
-                    <div class="one">
-                        <mat-form-field appearance="legacy">
-                            <mat-label>Favorite Cricket Moment</mat-label>
-                            <input type="text" placeholder="Name" formControlName = "favorite_movement">
+                <div class="parent-div">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Primary Number</mat-label>
+                            <input matInput type="number" placeholder="Phone" formControlName="primary_number"> 
+                            <mat-icon matSuffix>contact_phone</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Secondary Number</mat-label>
+                            <input matInput type="number" placeholder="Phone" formControlName="secondary_number"> 
+                            <mat-icon matSuffix>local_phone</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Emergency Contact</mat-label>
+                            <input matInput type="number" placeholder="Phone" formControlName="emergency_contact"> 
+                            <mat-icon matSuffix>phone_in_talk</mat-icon>
                         </mat-form-field>
                     </div>
                 </div>
-                 
-                    <div class="btn-row">
-                        <button mat-raised-button color="basic" (click)="clearInputMethod2()" [disabled]="parentForm.untouched">Clear</button>
-                        <button mat-raised-button class="primary" [disabled]="!studentForm.valid">Save</button>
+                <div class="select">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Relation With Student</mat-label>
+                            <select matNativeControl required formControlName="name_of_relation">
+                                <option value=""></option>
+                                <option value="father">Father</option>
+                                <option value="mother">Mother</option>
+                                <option value="brother/sister">Brother/Sister</option>
+                                <option value="spounce">Spounce</option>
+                              </select>
+                        </mat-form-field>
                     </div>
-            </mat-card>
-        </form>
+                </div>
+                <label>Payment</label> 
+                <div class="parent-div">
+                    <div>
+                    <mat-form-field>
+                        <mat-label>Packages</mat-label>
+                        <select matNativeControl required formControlName="packages">
+                            <option value=""></option>
+                            <option value="silver">Silver</option>
+                            <option value="bronze">Bronze</option>
+                            <option value="gold">Gold</option>
+                            <option value="diamond">Diamond</option>
+                          </select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Registration Amount</mat-label>
+                        <input matInput type="number" placeholder="Enter Amount" FormControlName="registration_amount">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Fee Amount</mat-label>
+                        <input matInput type="number" placeholder="Enter Amount" FormControlName="fee_amount">
+                    </mat-form-field>
+                </div>
+                </div>
+                <div class="parent-div">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Payment Mode</mat-label>
+                            <select matNativeControl required formControlName="payment_mode">
+                                <option value=""></option>
+                                <option value="debit">Debit</option>
+                                <option value="credit">Credit</option>
+                                <option value="upi's">UPI's</option>
+                                <option value="onlinepayment">OnlinePayment</option>
+                                <option value="cash">Cash</option>
+                              </select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Discount (%)</mat-label>
+                            <input matInput type="number" placeholder="Enter Discount" FormControlName="discount">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Total Amount Recieved</mat-label>
+                            <input matInput type="number" placeholder="Enter Amount" FormControlName="total_amount">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button mat-raised-button color="basic" (click)="clearInputMethod()" [disabled]="studentForm.untouched">Clear</button>
+                    <button mat-raised-button class="primary" >Save</button>
+                </div>
+        </mat-card>
+    </form>
+</div>

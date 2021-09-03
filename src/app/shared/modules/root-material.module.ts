@@ -18,6 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from "@angular/material/select";
+import {MatRadioModule} from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 const modules: any = [
   MatButtonModule,
@@ -29,6 +30,7 @@ const modules: any = [
   MatDatepickerModule,
   MatSnackBarModule,
   MatIconModule,
+  MatRadioModule,
   MatTableModule,
   MatSidenavModule,
   FormsModule,

@@ -82,6 +82,13 @@ const routes = [
             (m) => m.StudentRegistrationModule
           ),
       },
+      {
+        path: 'student-details',
+        loadChildren: () =>
+          import('../../routes/student-details/student-details.module').then(
+            (m) => m.StudentDetailsModule
+          ),
+      },
     ]
   },
 ];
