@@ -75,6 +75,32 @@
                     </mat-form-field>
                    </div>
                 </div>
+                <div class="parent-div">
+                    <div>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Age Groups</mat-label>
+                            <select matNativeControl required formControlName="age_group">
+                                <option value=""></option>
+                                <option value="6-10">6-10</option>
+                                <option value="10-14">10-14</option>
+                                <option value="14-18">14-18</option>
+                                <option value="18-21">18-21</option>
+                              </select>
+                            <mat-icon matSuffix>hiking</mat-icon>
+                        </mat-form-field>
+                       </div>
+                       <div>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Timing</mat-label>
+                            <select matNativeControl required formControlName="timing">
+                                <option value="Morning 7:00-8:30">Morning 7:00-8:30</option>
+                                <option value="Afternoon 1:00-2:30">Afternoon 1:00-2:30</option>
+                                <option value="Evening 7:00-8:30">Evening 7:00-8:30</option>
+                            </select>
+                            <mat-icon matSuffix>hiking</mat-icon>
+                        </mat-form-field>
+                       </div>
+                </div>
                 <label>Parent Info ("Guidience")</label> 
                 <div class="parent-div">
                     <div>
@@ -142,24 +168,24 @@
                     <mat-form-field>
                         <mat-label>Packages</mat-label>
                         <select matNativeControl required formControlName="packages">
-                            <option value=""></option>
-                            <option value="silver">Silver</option>
-                            <option value="bronze">Bronze</option>
-                            <option value="gold">Gold</option>
-                            <option value="diamond">Diamond</option>
+                            <option value="12 months">12 Months</option>
+                            <option value="1 months">1 Months</option>
+                            <option value="3 months">3 Months</option>
+                            <option value="6 months">6 Months</option>
+                            <option value="9 months">9 Months</option>
                           </select>
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field>
                         <mat-label>Registration Amount</mat-label>
-                        <input matInput type="number" placeholder="Enter Amount" FormControlName="registration_amount">
+                        <input matInput type="number" placeholder="Enter Amount" formControlName="registration_amount">
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field>
                         <mat-label>Fee Amount</mat-label>
-                        <input matInput type="number" placeholder="Enter Amount" FormControlName="fee_amount">
+                        <input matInput type="number" placeholder="Enter Amount" formControlName="fee_amount">
                     </mat-form-field>
                 </div>
                 </div>
@@ -180,19 +206,20 @@
                     <div>
                         <mat-form-field>
                             <mat-label>Discount (%)</mat-label>
-                            <input matInput type="number" placeholder="Enter Discount" FormControlName="discount">
+                            <input matInput type="number" placeholder="Enter Discount" formControlName="discount">
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
                             <mat-label>Total Amount Recieved</mat-label>
-                            <input matInput type="number" placeholder="Enter Amount" FormControlName="total_amount">
+                            <input matInput type="number" placeholder="Enter Amount" formControlName="total_amount">
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="btn-row">
-                    <button mat-raised-button color="basic" (click)="clearInputMethod()" [disabled]="studentForm.untouched">Clear</button>
-                    <button mat-raised-button class="primary" >Save</button>
+                    <mat-checkbox formControlName="terms">Terms & Condition!</mat-checkbox>
+                    <button mat-raised-button color="basic" (click)="clearInputMethod()" [disabled]="!studentForm.valid">Clear</button>
+                    <button mat-raised-button class="primary">Save</button>
                 </div>
         </mat-card>
     </form>

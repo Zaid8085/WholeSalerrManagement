@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z5">
-    <div id="student-details-container" *ngIf="spiTableSettings !== undefined">
-        <table spi-table id="student-details" [spiTableSettings]="spiTableSettings">
+    <div id="student_details-container" *ngIf="spiTableSettings !== undefined">
+        <table spi-table id="student_details" [spiTableSettings]="spiTableSettings">
           <thead spi-header [spiTableSettings]="spiTableSettings" (updatedSpiTableSettings)="detectChanges($event)">
             <tr>
                 <ng-container *ngFor="let column of displayedColumns">

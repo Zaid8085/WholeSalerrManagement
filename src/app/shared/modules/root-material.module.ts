@@ -19,6 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from "@angular/material/select";
 import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 const modules: any = [
   MatButtonModule,
@@ -39,6 +40,7 @@ const modules: any = [
   MatMenuModule,
   MatSelectModule,
   FlexLayoutModule,
+  MatCheckboxModule,
   MatProgressSpinnerModule,
 ];
 @NgModule({

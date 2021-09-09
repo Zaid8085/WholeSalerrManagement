@@ -89,6 +89,20 @@ const routes = [
             (m) => m.StudentDetailsModule
           ),
       },
+      {
+        path: 'diet-plan',
+        loadChildren: () =>
+          import('../../routes/diet-plan/diet-plan.module').then(
+            (m) => m.DietPlanModule
+          ),
+      },
+      {
+        path: 'diet-plan-settings',
+        loadChildren: () =>
+          import('../../routes/diet-plan-settings/diet-plan-settings.module').then(
+            (m) => m.DietPlanSettingsModule
+          ),
+      },
     ]
   },
 ];

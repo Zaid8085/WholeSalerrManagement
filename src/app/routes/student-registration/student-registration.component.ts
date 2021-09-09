@@ -10,6 +10,14 @@ import { NotificationComponent } from 'src/app/shared/components/notification/no
   styleUrls: ['./student-registration.component.scss']
 })
 export class StudentRegistrationComponent implements OnInit {
+
+messages= [
+  {"name":"Father"},
+  {"name":"Mother"},
+  {"name":"Brother/Sister"},
+  {"name":"Sponce"},
+]
+
   studentForm: FormGroup = this.fb.group({
     name: ['', Validators.required,],
     address: ['', Validators.required,],
@@ -33,6 +41,10 @@ export class StudentRegistrationComponent implements OnInit {
     payment_mode: [ '' ,Validators.required],
     discount: ['', Validators.required,],
     total_amount: ['', Validators.required,],
+    terms: ['',Validators.required],
+    age_group: ['',Validators.required],
+    timing: ['',Validators.required],
+    schedule: ['',Validators.required],
   });
   policies: any[];
   categories: any[];
@@ -44,6 +56,7 @@ export class StudentRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onSubmit() {
       console.warn(this.studentForm.value)
       this.isLoading = true;

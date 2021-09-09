@@ -61,7 +61,7 @@ export class StudentDetailsComponent implements OnInit {
           this.tableData.push(obj);
           console.log(this.tableData)
       })
-      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'student-details', false);
+      this.spiTableSettings =  new SpiTableSettings(this.tableData, this.displayedColumns, 'Student_Details', false);
     })
   }
   checkboxchecked(checked: any) {
@@ -90,7 +90,7 @@ export class StudentDetailsComponent implements OnInit {
  }
  
   resizeTable() {
-    const id = 'student_details';
+    const id = 'Student_Details';
     this.spiTableService._resizeTable(id);
   }
 }

@@ -60,6 +60,13 @@ export class LayoutComponent implements OnInit {
           {icon: 'how_to_reg', label: 'Student Registration', route: 'student-registration', url: '', title: 'Student Registration', disabled: false, isOpen: false, expandPriority: false,},
           {icon: 'groups', label: 'Student Details', route: 'student-details', url: '', title: 'Student Details', disabled: false, isOpen: false, expandPriority: false,}
         ],
+      },
+      {
+        icon: 'emoji_people', label: 'Dietician', route: './dummy', url: '', title: 'Dietician ', disabled: false, isOpen: false, expandPriority: false,
+        children: [
+          {icon: 'how_to_reg', label: 'Diet Plan', route: 'diet-plan', url: '', title: 'Diet Plan', disabled: false, isOpen: false, expandPriority: false,},
+          {icon: 'groups', label: 'Diet Plan Settings', route: 'diet-plan-settings', url: '', title: 'Diet Plan Settings', disabled: false, isOpen: false, expandPriority: false,}
+        ],
       }
     ]
     this.boltSidenavService.emitMenuOptions.next(this.navigationOptions)
